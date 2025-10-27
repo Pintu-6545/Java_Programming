@@ -1,58 +1,35 @@
-package core.java;
+package com.core;
 
-import java.util.Scanner;
-
-class A {
-	          int rno;
-	         void getA()
-	         {
-	        	 Scanner sc =new Scanner(System.in);
-	        	 System.out.println("Enter the Roll Number:");
-	        	 rno=sc.nextInt();  	 
-	         }
-	         void putA()
-	         {
-	        	 System.out.println("Roll No:" +rno);
-	         }
-}
-class B extends A {
-	        String name;
-	        void getB()
-	        {
-	        	Scanner sc=new Scanner(System.in);
-	        	System.out.println("Enter the Name:");
-	        	name=sc.nextLine();
-	        }
-	        void putB()
-	        {
-	        	System.out.println("Student Name:" +name);
-	        }
-}
-class C extends A
+class Social
 {
-	      long salary;
-	      void getC()
-	      {
-	    	  Scanner sc =new Scanner(System.in);
-	    	  System.out.println("Enter the Salary:");
-	    	  salary=sc.nextLong();
-	      }
-	      void putC()
-	      {
-	    	  System.out.println("Salary:" +salary);
-	      }
+	int no=45;
+	 public void show()
+	 {
+		 if(no%2==0)
+		 {
+			 System.out.println("Even Number:" + no);
+		 }
+		 else
+		 {
+			 System.out.println("Odd Number:" + no);
+		 }
+	 }
+}
+class Political extends Social
+{
+	  int no=5;
+	  public void show1()
+	  {
+		  int c=no*no*no;
+		  int s=no*no;
+		  System.out.println("Square:" + s);
+		  System.out.println("Cube:" + c);
+	  }
 }
 public class Inheritance {
-	public static void main(String[] args) {
-		B b1 =new B();
-		b1.getA();
-		b1.getB();
-		C c1 =new C();
-		c1.getA();
-		c1.getC();
-		c1.putA();
-		b1.putB();
-		c1.putC();
-	}
-
+public static void main(String[] args) {
+	  Political p1 = new Political();
+	  p1.show();
+	  p1.show1();
+}
 }
