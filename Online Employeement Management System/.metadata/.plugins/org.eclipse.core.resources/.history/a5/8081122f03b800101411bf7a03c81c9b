@@ -1,0 +1,162 @@
+<%@page import="com.dao.EmployeeDao"%>
+<%@page import="com.bean.Employee"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Employee List</title>
+
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #74ABE2, #5563DE);
+        margin: 0;
+        padding: 20px;
+        color: #333;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: white;
+        border-radius: 10px;
+        overflow: hidden;
+        animation: fadeIn 1.2s ease;
+        box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
+    }
+
+    th {
+        background-color: #5563DE;
+        color: white;
+        padding: 12px;
+        text-align: center;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        animation: slideDown 0.6s ease;
+    }
+
+    td {
+        text-align: center;
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+        animation: fadeRow 0.7s ease;
+    }
+
+    tr:hover {
+        background-color: #f0f4ff;
+        transform: scale(1.01);
+        transition: all 0.3s ease;
+    }
+
+    /* Buttons */
+    .btn {
+        border: none;
+        padding: 8px 14px;
+        border-radius: 8px;
+        font-size: 14px;
+        cursor: pointer;
+        color: white;
+        transition: all 0.3s ease;
+    }
+
+    .btn-edit {
+        background-color: #28a745;
+    }
+
+    .btn-edit:hover {
+        background-color: #218838;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(40,167,69,0.3);
+    }
+
+    .btn-delete {
+        background-color: #dc3545;
+    }
+
+    .btn-delete:hover {
+        background-color: #c82333;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(220,53,69,0.3);
+    }
+
+    /* Keyframe animations */
+    @keyframes fadeIn {
+        from {opacity: 0; transform: translateY(20px);}
+        to {opacity: 1; transform: translateY(0);}
+    }
+
+    @keyframes fadeRow {
+        from {opacity: 0;}
+        to {opacity: 1;}
+    }
+
+    @keyframes slideDown {
+        from {transform: translateY(-10px); opacity: 0;}
+        to {transform: translateY(0); opacity: 1;}
+    }
+
+    h2 {
+        text-align: center;
+        color: white;
+        margin-bottom: 20px;
+        animation: fadeIn 1s ease;
+    }
+</style>
+</head>
+<body>
+    <h2>Employee Records</h2>
+
+    <table>
+        <tr>
+            <th>EMP_ID</th>
+            <th>FNAME</th>
+            <th>LNAME</th>
+            <th>GENDER</th>
+            <th>EMAIL</th>
+            <th>MOBILE</th>
+            <th>ADDRESS</th>
+            <th>CITY</th>
+            <th>STATE</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        <%
+            List<Employee> list = EmployeeDao.getEmployees();
+            for(Employee s : list) {
+        %>
+        <tr>
+            <td><%=s.getEmp_id() %></td>
+            <td><%=s.getFname() %></td>
+            <td><%=s.getLname() %></td>
+            <td><%=s.getGender() %></td>
+            <td><%=s.getEmail() %></td>
+            <td><%=s.getMobile() %></td>
+            <td><%=s.getAddress() %></td>
+            <td><%=s.getCity()%></td>
+            <td><%=s.getState() %></td>
+            <td>
+                <form action="EmployeeController" method="post">
+                    <input type="hidden" name="emp_id" value="<%=s.getEmp_id()%>" />
+                    <button type="submit" name="action" value="Edit" class="btn btn-edit">
+                        <i class="fa-solid fa-pen-to-square"></i> Edit
+                    </button>
+                </form>
+            </td>
+            <td>
+                <form action="EmployeeController" method="post">
+                    <input type="hidden" name="emp_id" value="<%=s.getEmp_id()%>" />
+                    <button type="submit" name="action" value="Delete" class="btn btn-delete">
+                        <i class="fa-solid fa-trash"></i> Delete
+                    </button>
+                </form>
+            </td>
+        </tr>
+        <% } %>
+    </table>
+</body>
+</html>

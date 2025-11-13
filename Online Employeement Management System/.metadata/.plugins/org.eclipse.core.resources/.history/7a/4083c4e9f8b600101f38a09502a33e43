@@ -1,0 +1,38 @@
+package com.controller;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+import com.bean.Employee;
+import com.dao.EmployeeDao;
+
+
+@WebServlet("/EmployeeController")
+public class EmployeeController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+      
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String action = request.getParameter("action");
+		//System.out.println(action);
+		if(action.equalsIgnoreCase("insert"))
+		{
+			Employee e = new Employee();
+			e.setFname(request.getParameter("f1"));
+			e.setLname(request.getParameter("l1"));
+			e.setGender(request.getParameter("gender"));
+			e.setEmail(request.getParameter("e1"));
+			e.setMobile(Long.parseLong(request.getParameter("m1")));
+			e.setAddress(request.getParameter("a1"));
+			e.setCity(request.getParameter("c1"));
+			e.setState(request.getParameter("s1"));
+			EmployeeDao.insertEmployee(e);
+			response.sendRedirect("index.jsp");
+			
+		}
+	}
+
+}

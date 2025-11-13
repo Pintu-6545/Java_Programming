@@ -1,0 +1,282 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Animated Registration Form</title>
+  <style>
+    /* ===== BASIC RESET ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #8e2de2, #4a00e0);
+      overflow: hidden;
+      padding: 20px;
+    }
+
+    /* ===== CONTAINER ===== */
+    .form-container {
+      position: relative;
+      width: 100%;
+      max-width: 450px;
+      padding: 40px 35px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+      color: #fff;
+      animation: fadeIn 1.2s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .form-container h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 28px;
+      letter-spacing: 1px;
+      color: #fff;
+    }
+
+    /* ===== INPUT BOXES ===== */
+    .form-group {
+      position: relative;
+      margin-bottom: 25px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 15px;
+      border: none;
+      outline: none;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      font-size: 15px;
+      resize: none;
+      transition: all 0.4s ease;
+    }
+
+    .form-group label {
+      position: absolute;
+      top: 12px;
+      left: 15px;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 14px;
+      pointer-events: none;
+      transition: 0.3s ease;
+    }
+
+    .form-group input:focus + label,
+    .form-group input:valid + label,
+    .form-group textarea:focus + label,
+    .form-group textarea:valid + label {
+      top: -10px;
+      left: 10px;
+      font-size: 12px;
+      color: #00e6ff;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 2px 6px;
+      border-radius: 6px;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      background: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 10px #00e6ff;
+      transform: scale(1.03);
+    }
+
+    /* ===== GENDER SECTION ===== */
+    .gender-group {
+      margin-bottom: 25px;
+    }
+
+    .gender-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 15px;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .gender-options {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .gender-options label {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .gender-options input {
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      border: 2px solid #00e6ff;
+      border-radius: 50%;
+      margin-right: 8px;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .gender-options input:checked {
+      background: #00e6ff;
+      box-shadow: 0 0 10px #00e6ff;
+    }
+
+    /* ===== ANIMATED BUTTON ===== */
+    .btn {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+      background: linear-gradient(135deg, #00c6ff, #0072ff);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s ease;
+    }
+
+    .btn::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+      transition: all 0.6s ease;
+    }
+
+    .btn:hover::before {
+      left: 100%;
+    }
+
+    .btn:hover {
+      box-shadow: 0 0 20px rgba(0, 198, 255, 0.6);
+      transform: translateY(-3px);
+    }
+
+    .btn:active {
+      transform: scale(0.97);
+    }
+
+    /* ===== FOOTER ===== */
+    .form-footer {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    .form-footer a {
+      color: #00e6ff;
+      text-decoration: none;
+    }
+
+    .form-footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 480px) {
+      .form-container {
+        padding: 30px 20px;
+      }
+
+      .form-container h2 {
+        font-size: 24px;
+      }
+
+      .gender-options {
+        flex-direction: column;
+        gap: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Registration Form</h2>
+    <form name="frm" method="post" action="EmployeeController">
+      <div class="form-group">
+        <input type="text" id="first" name="f1"  />
+        <label for="first">First Name</label>
+      </div>
+
+      <div class="form-group">
+        <input type="text" id="last" name="l1" />
+        <label for="last">Last Name</label>
+      </div>
+
+      <div class="gender-group">
+        <label>Gender</label>
+        <div class="gender-options">
+          <label><input type="radio" name="gender" value="male" /> Male</label>
+          <label><input type="radio" name="gender" value="female"  /> Female</label>
+          <label><input type="radio" name="gender" value="other"  /> Other</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input type="email" id="email" name="e1" />
+        <label for="email">Email Address</label>
+      </div>
+
+      <div class="form-group">
+        <input type="text" id="phone" name="m1" />
+        <label for="phone">Mobile</label>
+      </div>
+
+      <div class="form-group">
+        <input type="text" id="city" name="c1" />
+        <label for="city">City</label>
+      </div>
+
+      <div class="form-group">
+        <input type="text" id="state" name="s1" />
+        <label for="state">State</label>
+      </div>
+
+      <div class="form-group">
+        <textarea id="address" name="a1" rows="3" ></textarea>
+        <label for="address">Address</label>
+      </div>
+
+      <input type="submit" name="action" class="btn" value="Create Account" />
+    </form>
+
+    <div class="form-footer">
+      Already have an account? <a href="#">Login here</a>
+    </div>
+  </div>
+</body>
+</html>

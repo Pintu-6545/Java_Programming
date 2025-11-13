@@ -1,0 +1,30 @@
+package com.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+import com.bean.Employee;
+import com.util.EmployeeUtil;
+
+public class EmployeeDao {
+      public static void insertEmployee(Employee s)
+      {
+    	  try {
+			Connection conn = EmployeeUtil.createConnection();
+			String sql="insert into employee (fname,lname,gender,email,mobile,address,city,state) values(?,?,?,?,?,?,?,?)";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			pst.setString(1, s.getFname());
+			pst.setString(2, s.getLname());
+			pst.setString(3, s.getGender());
+			pst.setString(4, s.getEmail());
+			pst.setLong(5, s.getMobile());
+			pst.setString(6, s.getAddress());
+			pst.setString(7, s.getCity());
+			pst.setString(8, s.getState());
+			pst.executeQuery();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+    	  
+      }
+}

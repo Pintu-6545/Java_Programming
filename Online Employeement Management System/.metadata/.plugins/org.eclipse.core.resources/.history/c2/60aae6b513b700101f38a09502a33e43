@@ -1,0 +1,66 @@
+package com.controller;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+import com.bean.Employee;
+import com.dao.EmployeeDao;
+
+
+@WebServlet("/EmployeeController")
+public class EmployeeController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+      
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String action = request.getParameter("action");
+		//System.out.println(action);
+		if(action.equalsIgnoreCase("insert"))
+		{
+			Employee s = new Employee();
+			s.setFname(request.getParameter("f1"));
+			s.setLname(request.getParameter("l1"));
+			s.setGender(request.getParameter("gender"));
+			s.setEmail(request.getParameter("e1"));
+			s.setMobile(Long.parseLong(request.getParameter("m1")));
+			s.setAddress(request.getParameter("a1"));
+			s.setCity(request.getParameter("c1"));
+			s.setState(request.getParameter("s1"));
+			EmployeeDao.insertEmployee(s);
+			request.setAttribute("msg", "Data are Successfully Inserted");
+			request.getRequestDispatcher("index.jsp").forward(request, response);
+			
+			//response.sendRedirect("index.jsp");
+			
+		}
+		
+		else if(action.equalsIgnoreCase("edit"))
+		{
+			int emp_id = Integer.parseInt(request.getParameter("emp_id"));
+			Employee s = EmployeeDao.getEmployee(emp_id);
+			request.setAttribute("s", s);
+			request.getRequestDispatcher("update.jsp").forward(request, response);
+			
+		}
+		else if(action.equalsIgnoreCase("update"))
+		{
+			Employee s = new Employee();
+			s.setEmp_id(Integer.parseInt(request.getParameter("emp_id")));
+			s.setFname(request.getParameter("f1"));
+			s.setLname(request.getParameter("l1"));
+			s.setGender(request.getParameter("gender"));
+			s.setEmail(request.getParameter("e1"));
+			s.setMobile(Long.parseLong(request.getParameter("m1")));
+			s.setAddress(request.getParameter("a1"));
+			s.setCity(request.getParameter("c1"));
+			s.setState(request.getParameter("a1"));
+			EmployeeDao.updateEmployee(s);
+			response.sendRedirect("show.jsp");
+			
+		}
+	}
+
+}

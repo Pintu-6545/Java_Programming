@@ -1,0 +1,61 @@
+<%@page import="com.dao.EmployeeDao"%>
+<%@page import="com.bean.Employee"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+    <table border="5" width="100%">
+         <tr>
+              <th>EMP_ID</th>
+              <th>FNAME</th>
+              <th>LNAME</th>
+              <th>GENDER</th>
+              <th>EMAIL</th>
+              <th>MOBILE</th>
+              <th>ADDRESS</th>
+              <th>CITY</th>
+              <th>STATE</th>
+              <th>Edit</th>
+              <th>Delete</th>
+         </tr>
+         <%
+           List<Employee> list = EmployeeDao.getEmployees();
+             for(Employee s : list)
+             {
+            %>
+                <tr>
+                		<td><%=s.getEmp_id() %></td>
+                		<td><%=s.getFname() %></td>
+                		<td><%=s.getLname() %></td>
+                		<td><%=s.getGender() %></td>
+                		<td><%=s.getEmail() %></td>
+                		<td><%=s.getMobile() %></td>
+                		<td><%=s.getAddress() %></td>
+                		<td><%=s.getCity()%></td>
+                		<td><%=s.getState() %></td>
+                		<td>
+                		      <form name="frm" action="EmployeeController" method="post">
+                		      <input type="hidden" name="emp_id" value="<%=s.getEmp_id() %>" />
+                		         <input type="submit" name="action" value="Edit"  />
+                		      </form>
+                		</td>
+                		<td>
+                		      <form name="frm" action="EmployeeController" method="post">
+                		      <input type="hidden" name="emp_id" value="<%=s.getEmp_id() %>" />
+                		         <input type="submit" name="action" value="Delete"  />
+                		      </form>
+                		</td>
+                </tr>
+            <%
+            			 
+             }
+         %>
+    </table>
+</body>
+</html>
