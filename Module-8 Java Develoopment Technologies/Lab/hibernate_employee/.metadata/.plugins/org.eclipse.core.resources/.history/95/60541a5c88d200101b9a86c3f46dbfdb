@@ -1,0 +1,16 @@
+package com.util;
+
+public class EmployeeUtil {
+	
+	public static Session createSession()
+	{
+		SessionFactory sf = new Configuration()
+				.addAnnotatedClass(Employee_info.class)
+				.addAnnotatedClass(Employee.class)
+				.configure()
+				.buildSessionFactory(); 
+		Session session = sf.openSession();
+		return session;
+	}
+
+}
