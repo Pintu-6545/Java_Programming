@@ -1,0 +1,41 @@
+<%@page import="com.dao.UsersDao"%>
+<%@page import="com.bean.Users"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@include file="header.jsp" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Display Drivers Data</title>
+</head>
+<body>
+   <section class="section">
+		<h2>Drivers Data </h2>
+		<table>
+			<tr>
+				<th>DID</th>
+				<th>Name</th>
+				<th>Phone No.</th>
+				<th>License No.</th>
+				<th>User ID</th>
+				<th>Email</th>
+				<th>Passowrd</th>
+				<th>Username</th>
+				<th>Role</th>
+				<th>Status</th>
+			</tr>
+			<%
+			  List<Users> list = UsersDao.getAllUsers();
+			  for()
+			%>
+			<tr>
+				<td>Car</td>
+				<td>Active</td>
+				<td>GPS</td>
+			</tr>
+		</table>
+	</section>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<%@page import="com.bean.Drivers"%>
+<%@page import="com.dao.DriversDao"%>
+<%@page import="com.bean.DriverView"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@include file="header.jsp"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Edit Driver Details</title>
+</head>
+<body>
+	<section class="form-section">
+		<div class="form-wrapper">
+
+			<!-- LEFT INFO -->
+			<div class="form-info">
+				<h2>Edit Driver Data</h2>
+
+				<div class="info-box">
+					<i class="fa-solid fa-truck-fast"></i> <span>All Vehicle
+						Types Available</span>
+				</div>
+
+				<div class="info-box">
+					<i class="fa-solid fa-location-dot"></i> <span>Pan India
+						Delivery Network</span>
+				</div>
+
+				<div class="info-box">
+					<i class="fa-solid fa-headset"></i> <span>24×7 Customer
+						Support</span>
+				</div>
+			</div>
+
+			<!-- FORM -->
+			<%
+			DriverView d = (DriverView) request.getAttribute("d");
+			%>
+			<form class="form-box" name="frm" method="post"
+				action="DriverController">
+				<div class="input-group">
+					<input type="hidden" name="user_id" value="<%=d.getUser_id()%>"
+						required>
+				</div>
+				<div class="input-group">
+					<i class="fa-solid fa-user"></i> <input type="text"
+						name="driver_id" value="<%=d.getDriver_id()%>"
+						placeholder="Driver Id" readonly="readonly" required>
+				</div>
+				<div class="input-group">
+					<i class="fa-solid fa-user"></i> <input type="text" name="name"
+						value="<%=d.getName()%>" placeholder="Full Name" required>
+				</div>
+
+				<div class="input-group">
+					<i class="fa-solid fa-envelope"></i> <input type="email"
+						name="email" value="<%=d.getEmail()%>"
+						placeholder="Email Address" required>
+				</div>
+
+				<div class="input-group">
+					<i class="fa fa-lock"></i> <input type="password" name="password"
+						value="<%=d.getPassword()%>" placeholder="Password" required>
+				</div>
+				<div class="input-group">
+					<i class="fa fa-user"></i> <input type="text" name="username"
+						value="<%=d.getUsername()%>" placeholder="Enter Username"
+						required>
+				</div>
+				<div class="input-group">
+					<i class="fa-solid fa-phone"></i> <input type="text"
+						name="phone_no" value="<%=d.getPhone_no()%>"
+						placeholder="Mobile Number" required>
+				</div>
+				<div class="input-group">
+					<i class="fa fa-id-card"></i> <input type="text" name="license_no"
+						value="<%=d.getLicense_no()%>" placeholder="License Number"
+						required>
+				</div>
+
+				<div class="input-group">
+					<i class="fa-solid fa-car-side"></i> <select name="role"
+						value="<%=d.getUser_id()%>" required>
+						<option value="Select Role">Select Role</option>
+						<option value="driver"
+							<%="driver".equals(d.getRole()) ? "selected" : ""%>>
+							Driver</option>
+					</select>
+				</div>
+				<div class="input-group">
+					<i class="fa fa-check-circle"></i> <input type="text" name="status"
+						value="<%=d.getStatus()%>" placeholder="Status" required>
+				</div>
+
+				<button type="submit" name="action" value="update">Update
+					Driver</button>
+			</form>
+
+		</div>
+	</section>
+
+</body>
+</html>

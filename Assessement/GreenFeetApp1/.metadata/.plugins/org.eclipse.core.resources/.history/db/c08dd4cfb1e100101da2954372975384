@@ -1,0 +1,33 @@
+public class Vehicles {
+
+    private int vehicle_id;
+    private int driver_id;
+    private String number_plate;
+    private String type;
+    private String insurance_expiry;
+
+    public int getDriver_id() {
+        return driver_id;
+    }
+    public void setDriver_id(int driver_id) {
+        this.driver_id = driver_id;
+    }
+    public String getNumber_plate() {
+        return number_plate;
+    }
+    public void setNumber_plate(String number_plate) {
+        this.number_plate = number_plate;
+    }
+    public String getType() {
+        return type;
+    }
+    public void setType(String type) {
+        this.type = type;
+    }
+    public String getInsurance_expiry() {
+        return insurance_expiry;
+    }
+    public void setInsurance_expiry(String insurance_expiry) {
+        this.insurance_expiry = insurance_expiry;
+    }
+}

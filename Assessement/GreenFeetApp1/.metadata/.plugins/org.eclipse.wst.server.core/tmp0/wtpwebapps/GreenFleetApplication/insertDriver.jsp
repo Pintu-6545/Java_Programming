@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Attractive Responsive Form</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/insert.css">
+</head>
+<body>
+
+  <div class="form-container">
+    <h2>Add Driver</h2>
+
+    <form name="frm" method="post" action="DriverController">
+      <div class="input-group">
+        <i class="fa fa-user"></i>
+        <input type="text" name="name" placeholder="Full Name" required />
+      </div>
+
+      <div class="input-group">
+        <i class="fa fa-envelope"></i>
+        <input type="email" name="email" placeholder="Email Address" required />
+      </div>
+      <div class="input-group">
+        <i class="fa fa-lock"></i>
+        <input type="password" name="password"  placeholder="Password" required />
+      </div>
+      <div class="input-group">
+        <i class="fa fa-lock"></i>
+        <input type="password" name="cpassword" placeholder="Confirm Password" required />
+      </div>
+      <div class="input-group">
+        <i class="fa fa-lock"></i>
+        <input type="text"  name="phone_no" placeholder="Mobile" required />
+      </div>
+      <div class="input-group">
+        <i class="fa fa-lock"></i>
+        <input type="text" name="username" placeholder="Username" required />
+      </div>
+      <div class="input-group">
+        <i class="fa fa-lock"></i>
+        <input type="text" name="license_no" placeholder="License" required />
+      </div>
+
+      <!-- Dropdown Field -->
+      <div class="input-group">
+        <i class="fa fa-user-tag"></i>
+        <select name="role" required >
+          <option value="">Select Role</option>
+          <option value="admin">Admin</option>
+          <option value="driver">Driver</option>
+        </select>
+      </div>
+	  <div class="input-group">
+        <i class="fa fa-lock"></i>
+        <input type="text" name="status" placeholder="Status" required />
+      </div>
+
+      <button type="submit" name="action" value="insert" class="btn-submit">Register</button>
+    </form>
+
+    <div class="footer-text">Already have an account? Login</div>
+  </div>
+
+</body>
+</html>

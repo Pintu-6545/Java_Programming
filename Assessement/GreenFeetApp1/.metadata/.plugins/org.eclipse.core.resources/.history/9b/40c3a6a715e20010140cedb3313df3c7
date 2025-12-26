@@ -1,0 +1,25 @@
+<%@page import="java.util.List"%>
+<%@page import="com.bean.Drivers"%>
+
+<table border="1">
+    <tr>
+        <th>Driver Name</th>
+        <th>Action</th>
+    </tr>
+
+<%
+    List<Drivers> list = (List<Drivers>) request.getAttribute("driverList");
+    for (Drivers d : list) {
+%>
+    <tr>
+        <td><%= d.getName() %></td>
+        <td>
+            <a href="add-vehicles.jsp?driver_id=<%= d.getDriver_id() %>">
+                Add Vehicle
+            </a>
+        </td>
+    </tr>
+<%
+    }
+%>
+</table>

@@ -1,0 +1,75 @@
+<%@page import="com.bean.DriverView"%>
+<%@page import="com.dao.VehiclesDao"%>
+<%@page import="com.bean.Vehicles"%>
+<%@page import="com.dao.DriversDao"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@include file="header.jsp"%>
+<%
+    DriverView d = (DriverView) session.getAttribute("driver");
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Add New Vehicle</title>
+</head>
+<body>
+	<section class="form-section">
+		<div class="form-wrapper">
+
+			<!-- LEFT INFO -->
+			<div class="form-info">
+				<h2>Resiter New Vehicle</h2>
+
+				<div class="info-box">
+					<i class="fa-solid fa-truck-fast"></i> <span>All Vehicle
+						Types Available</span>
+				</div>
+
+				<div class="info-box">
+					<i class="fa-solid fa-location-dot"></i> <span>Pan India
+						Delivery Network</span>
+				</div>
+
+				<div class="info-box">
+					<i class="fa-solid fa-headset"></i> <span>24×7 Customer
+						Support</span>
+				</div>
+			</div>
+
+			<!-- FORM -->
+			
+		
+			<form class="form-box" name="frm" method="post" action="VehicleController">
+			
+			 <!-- ✅ PASS DRIVER ID -->
+            <input type="hidden" name="driver_id" value="<%= d.getDriver_id() %>">
+            
+				<div class="input-group">
+					<i class="fa-solid fa-user"></i> <input type="text"
+					 name="number_plate" placeholder=" Vehicle Number" required>
+				</div>
+
+				<div class="input-group">
+					<i class="fa-solid fa-car-side"></i> <select name="type" required>
+						<option value="Select Role">Select Vehicle</option>
+         				<option value="driver">Car</option>
+         				<option value="driver">Bike</option>
+         				<option value="driver">Truck</option>
+					</select>
+				</div>
+				
+				<div class="input-group">
+					<i class="fa-solid fa-envelope"></i> <input type="text"
+					 name="insurance_expiry" placeholder="Insurance Data" required>
+				</div>
+
+				<button type="submit" name="action" value="insert">Add Vehicle</button>
+			</form>
+
+		</div>
+	</section>
+
+</body>
+</html>

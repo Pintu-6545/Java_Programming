@@ -1,0 +1,82 @@
+package com.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.bean.Drivers;
+import com.bean.Users;
+import com.util.GreenFleetUtil;
+
+public class DriversDao {
+
+	public static void insertDrivers(Drivers d)
+	{
+		try {
+			
+			Connection conn = GreenFleetUtil.createConnection();
+			String sql="insert into driver (user_id,name,license_no,phone_no) values(?,?,?,?)";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			pst.setInt(1,d.getUser_id());
+			pst.setString(2, d.getName());
+			pst.setString(3, d.getLicense_no());
+			pst.setLong(4, d.getPhone_no());
+			pst.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public static boolean checkEmail(String email)
+	{
+		boolean flag =false;
+		try {
+			Connection conn = GreenFleetUtil.createConnection();
+			String sql="select * from driver where email=?";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			pst.setString(1, email);
+			ResultSet rs = pst.executeQuery();
+			if(rs.next())
+			{
+				flag=true;
+			}
+			//rs.close();
+            //pst.close();
+           // conn.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return flag;
+	}
+	
+	public static List<Drivers> getAllDrivers()
+    {
+   	 List<Drivers> list = new ArrayList<Drivers>();
+   			 try {
+					Connection conn = GreenFleetUtil.createConnection();
+					String sql="select * from driver";
+					PreparedStatement pst = conn.prepareStatement(sql);
+					ResultSet rs = pst.executeQuery();
+					while(rs.next())
+					{
+						Drivers d = new Drivers();
+						d.setDriver_id(rs.getInt("driver_id"));
+						d.setName(rs.getString("name"));
+						d.setLicense_no(rs.getString("license_no"));
+						d.setPhone_no(rs.getLong("phone_no"));
+						Users u = new Users();
+						u.setEmail(rs.getString("email"));
+						u.setPassowrd(rs.getString("password"));
+						u.setRole(rs.getString("role"));
+						u.setStatus(rs.getString("status"));
+						list.add(d);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+   	 return list;
+    }
+}

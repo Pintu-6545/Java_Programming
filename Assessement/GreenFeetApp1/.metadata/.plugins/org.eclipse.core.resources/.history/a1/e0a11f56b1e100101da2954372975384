@@ -1,0 +1,38 @@
+package com.controller;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+import com.bean.Drivers;
+import com.bean.Vehicles;
+import com.dao.DriversDao;
+import com.dao.VehicleDao;
+
+@WebServlet("/VehicleController")
+public class VehicleController extends HttpServlet {
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        String action = request.getParameter("action");
+
+        if ("insert".equalsIgnoreCase(action)) {
+
+            int driver_id = Integer.parseInt(request.getParameter("driver_id"));
+
+            Vehicles v = new Vehicles();
+            v.setDriver_id(driver_id);
+            v.setNumber_plate(request.getParameter("number_plate"));
+            v.setType(request.getParameter("type"));
+            v.setInsurance_expiry(request.getParameter("insurance_expiry"));
+
+            VehicleDao.insertVehicle(v);
+
+            response.sendRedirect("admin-index.jsp");
+        }
+    }
+}

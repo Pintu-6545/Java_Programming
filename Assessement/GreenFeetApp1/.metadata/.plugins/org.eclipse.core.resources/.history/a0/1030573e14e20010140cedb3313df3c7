@@ -1,0 +1,39 @@
+package com.controller;
+
+import com.bean.Vehicles;
+import com.dao.VehiclesDao;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+@WebServlet("/VehiclesController")
+public class VehiclesController extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        String driverIdStr = request.getParameter("driver_id");
+
+        if (driverIdStr == null || driverIdStr.isEmpty()) {
+            throw new ServletException("Driver ID is missing");
+        }
+
+        int driver_id = Integer.parseInt(driverIdStr);
+
+        Vehicles v = new Vehicles();
+        v.setDriver_id(driver_id);
+        v.setNumber_plate(request.getParameter("number_plate"));
+        v.setType(request.getParameter("type"));
+        v.setInsurance_expiry(request.getParameter("insurance_expiry"));
+
+        VehiclesDao.addVehicles(v);
+
+        response.sendRedirect("view-vehicles.jsp");
+    }
+
+}

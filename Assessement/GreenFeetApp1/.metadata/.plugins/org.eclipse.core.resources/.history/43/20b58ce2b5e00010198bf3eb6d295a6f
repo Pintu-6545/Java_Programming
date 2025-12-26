@@ -1,0 +1,61 @@
+package com.controller;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
+import java.io.IOException;
+
+import com.bean.Users;
+import com.dao.UsersDao;
+
+@WebServlet("/LoginController")
+public class LoginController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String action=request.getParameter("action");
+		if(action.equalsIgnoreCase("login"))
+		{
+		    Users u= UsersDao.userLogin(request.getParameter("email"));
+		    if(u!=null)
+		    {
+		    	if(u.getPassowrd().equals(request.getParameter("password")))
+		    	{
+		    		HttpSession session = request.getSession();
+		    		session.setAttribute("u",u);
+		    		if(u.getRole().equals("student"))
+		    		{
+		    			request.getRequestDispatcher("index.jsp").forward(request, response);
+		    		}
+		    		else if(u.getRole().equals("teacher"))
+		    		{
+		    			request.getRequestDispatcher("teacher-index.jsp").forward(request, response);
+		    		}
+		    		else if(u.getRole().equals("admin"))
+		    		{
+		    			request.getRequestDispatcher("admin-index.jsp").forward(request, response);
+		    		} 
+		    			
+		    	}
+		    	else
+		    	{
+		    		request.setAttribute("msg", "Incorrect Invalid Password");
+        			request.getRequestDispatcher("login.jsp").forward(request, response);
+		    	}
+		    }
+			
+			
+		}
+		else
+		{
+			request.setAttribute("msg", "Email Not Register");
+    		request.getRequestDispatcher("login.jsp").forward(request, response);
+		}
+	}
+
+}

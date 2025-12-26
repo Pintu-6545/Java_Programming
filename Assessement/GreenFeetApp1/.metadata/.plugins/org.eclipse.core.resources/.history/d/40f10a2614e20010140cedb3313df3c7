@@ -1,0 +1,39 @@
+package com.controller;
+
+import com.bean.Vehicles;
+import com.dao.VehiclesDao;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+@WebServlet("/VehiclesController")
+public class VehiclesController extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        // 1. Read data from JSP
+        int driver_id = Integer.parseInt(request.getParameter("driver_id"));
+        String number_plate = request.getParameter("number_plate");
+        String type = request.getParameter("type");
+        String insurance_expiry = request.getParameter("insurance_expiry");
+
+        // 2. Set data into Bean
+        Vehicles v = new Vehicles();
+        v.setDriver_id(driver_id);
+        v.setNumber_plate(number_plate);
+        v.setType(type);
+        v.setInsurance_expiry(insurance_expiry);
+
+        // 3. Call DAO
+        VehiclesDao.addVehicles(v);
+
+        // 4. Redirect
+        response.sendRedirect("view-vehicles.jsp");
+    }
+}

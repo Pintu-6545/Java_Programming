@@ -1,0 +1,36 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Add Vehicle</title>
+</head>
+<body>
+
+<h2>Add Vehicle</h2>
+
+<form action="VehicleController" method="post">
+
+    <!-- Driver ID (Foreign Key) -->
+    <input type="hidden" name="driver_id" value="1">
+
+    <label>Vehicle Number</label><br>
+    <input type="text" name="number_plate" required><br><br>
+
+    <label>Vehicle Type</label><br>
+    <select name="type" required>
+        <option value="">Select</option>
+        <option value="Truck">Truck</option>
+        <option value="Car">Car</option>
+        <option value="Bike">Bike</option>
+    </select><br><br>
+
+    <label>Insurance Expiry</label><br>
+    <input type="date" name="insurance_expiry" required><br><br>
+
+    <button type="submit">Add Vehicle</button>
+</form>
+
+</body>
+</html>

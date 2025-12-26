@@ -1,0 +1,26 @@
+package com.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+import com.bean.Vehicles;
+import com.util.GreenFleetUtil;
+
+public class VehicleDao {
+
+	public static void insertVehicle(Vehicles v)
+	{
+		try {
+			
+			Connection conn = GreenFleetUtil.createConnection();
+			String sql="INSERT INTO vehicle (number_plate,type,insurance_expiry) VALUES (?,?,?,?)";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			pst.setString(1, v.getNumber_plate());
+			pst.setString(2, v.getType());
+			pst.setString(3, v.getInsurance_expiry());
+			pst.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}

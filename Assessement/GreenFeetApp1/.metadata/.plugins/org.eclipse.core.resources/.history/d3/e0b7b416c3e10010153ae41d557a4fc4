@@ -1,0 +1,36 @@
+<%@page import="com.bean.Drivers"%>
+<%@page import="com.dao.DriversDao"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@include file="header.jsp"%>
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Add New Driver</title>
+</head>
+<body>
+<form method="post" action="VehicleController">
+
+    <!-- FOREIGN KEY -->
+    <input type="hidden" name="driver_id" value="<%=driver_id%>">
+
+    Number Plate:
+    <input type="text" name="number_plate" required><br><br>
+
+    Vehicle Type:
+    <select name="type" required>
+        <option value="Car">Car</option>
+        <option value="Bike">Bike</option>
+        <option value="Truck">Truck</option>
+    </select><br><br>
+
+    Insurance Expiry:
+    <input type="date" name="insurance_expiry" required><br><br>
+
+    <button type="submit">Save Vehicle</button>
+</form>
+
+</body>
+</html>

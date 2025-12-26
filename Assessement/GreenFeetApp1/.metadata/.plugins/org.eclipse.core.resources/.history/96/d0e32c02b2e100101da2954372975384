@@ -1,0 +1,50 @@
+package com.controller;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+import com.bean.Drivers;
+import com.bean.Vehicles;
+import com.dao.DriversDao;
+import com.dao.VehicleDao;
+
+@WebServlet("/VehicleController")
+public class VehicleController extends HttpServlet {
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        String action = request.getParameter("action");
+
+        if ("insert".equals(action)) {
+
+            int driver_id = Integer.parseInt(request.getParameter("driver_id"));
+            String number_plate = request.getParameter("number_plate");
+            String type = request.getParameter("type");
+            String insurance_expiry = request.getParameter("insurance_expiry");
+
+            System.out.println("Driver ID: " + driver_id);
+            System.out.println("Plate: " + number_plate);
+            System.out.println("Type: " + type);
+            System.out.println("Expiry: " + insurance_expiry);
+
+            Vehicles v = new Vehicles();
+            v.setDriver_id(driver_id);
+            v.setNumber_plate(number_plate);
+            v.setType(type);
+            v.setInsurance_expiry(insurance_expiry);
+
+            boolean status = VehicleDao.insertVehicle(v);
+
+            if (status) {
+                response.sendRedirect("admin-index.jsp");
+            } else {
+                response.getWriter().print("Insert Failed");
+            }
+        }
+    }
+}

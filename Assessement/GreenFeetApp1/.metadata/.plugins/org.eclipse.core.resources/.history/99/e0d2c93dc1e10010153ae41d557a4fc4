@@ -1,0 +1,74 @@
+<%@page import="com.bean.Drivers"%>
+<%@page import="com.dao.DriversDao"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@include file="header.jsp"%>
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Add New Driver</title>
+</head>
+<body>
+	<section class="form-section">
+		<div class="form-wrapper">
+
+			<!-- LEFT INFO -->
+			<div class="form-info">
+				<h2>Resiter New Vehicle</h2>
+
+				<div class="info-box">
+					<i class="fa-solid fa-truck-fast"></i> <span>All Vehicle
+						Types Available</span>
+				</div>
+
+				<div class="info-box">
+					<i class="fa-solid fa-location-dot"></i> <span>Pan India
+						Delivery Network</span>
+				</div>
+
+				<div class="info-box">
+					<i class="fa-solid fa-headset"></i> <span>24×7 Customer
+						Support</span>
+				</div>
+			</div>
+
+
+			<!-- FORM -->
+			
+			<form class="form-box" method="post" action="VehicleController">
+
+			<input type="hidden" name="driver_id" value="<%=d.getDriver_id() %>" >
+			<div class="input-group">
+				<i class="fa-solid fa-user"></i>
+				<input type="text" name="number_plate" placeholder="Number Plate" required>
+			</div>
+
+			<div class="input-group">
+				<i class="fa-solid fa-car-side"></i>
+				<select name="type" required>   <!-- ✅ CHANGED -->
+					<option value="">Select Vehicle Type</option>
+					<option value="truck">Truck</option>
+					<option value="car">Car</option>
+					<option value="bike">Bike</option>
+					<option value="mini truck">Mini Truck</option>
+				</select>
+			</div>
+
+			<div class="input-group">
+				<i class="fa-solid fa-phone"></i>
+				<input type="date" name="insurance_expiry" required>
+			</div>
+
+			<button type="submit" name="action" value="insert">
+				Add Vehicle
+			</button>
+
+		</form>
+
+		</div>
+	</section>
+
+</body>
+</html>

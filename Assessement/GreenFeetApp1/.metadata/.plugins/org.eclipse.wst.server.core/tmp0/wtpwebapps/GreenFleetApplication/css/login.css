@@ -1,0 +1,196 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Poppins",sans-serif;
+}
+
+/* ✨ Soft Natural Gradient Background */
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(145deg,#dff6ff,#fce4ec,#e8f5e9,#fff5e4);
+    padding:20px;
+    overflow:hidden;
+}
+
+/* Floating Glows */
+.ai-glow{
+    position:absolute;
+    width:35vw;
+    height:35vw;
+    max-width:350px;
+    max-height:350px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.7);
+    filter:blur(110px);
+    animation:float 7s infinite ease-in-out alternate;
+}
+.ai-glow:nth-child(1){ top:5%; left:8%; }
+.ai-glow:nth-child(2){ bottom:5%; right:10%; }
+
+@keyframes float{
+    0%{ transform:scale(1) translate(0,0); }
+    100%{ transform:scale(1.1) translate(40px,60px); }
+}
+
+/* MAIN LOGIN BOX */
+.login-box{
+    width:min(90%, 500px);
+    padding:clamp(40px, 6vw, 60px);
+    background:rgba(255,255,255,0.78);
+    backdrop-filter:blur(30px);
+    border-radius:30px;
+    border:1px solid rgba(255,255,255,0.4);
+    box-shadow:0 25px 45px rgba(0,0,0,0.15);
+
+    animation:pop 1s ease forwards;
+    opacity:0;
+    transform:translateY(30px);
+}
+
+@keyframes pop{
+    100%{ opacity:1; transform:translateY(0); }
+}
+
+.login-box h2{
+    text-align:center;
+    margin-bottom:clamp(25px, 4vw, 35px);
+    color:#2a5d84;
+    font-size:clamp(26px, 5vw, 34px);
+}
+
+/* INPUT FIELDS */
+.input-group{
+    position:relative;
+    margin-bottom:clamp(20px, 3.5vw, 32px);
+}
+
+.input-group input{
+    width:100%;
+    padding:clamp(14px, 3vw, 18px) clamp(50px, 5vw, 55px);
+    border-radius:50px;
+    border:2px solid #d0e4f5;
+    background:#fff;
+    font-size:clamp(15px,4vw,18px);
+    color:#274d68;
+    transition:0.3s;
+}
+
+.input-group input:hover{
+    border-color:#8ecae6;
+}
+
+.input-group input:focus{
+    border-color:#219ebc;
+    box-shadow:0 0 15px rgba(33,158,188,0.35);
+    outline:none;
+}
+
+/* Icons */
+.input-group i{
+    position:absolute;
+    top:50%;
+    left:20px;
+    transform:translateY(-50%);
+    color:#4e7da1;
+    font-size:clamp(18px, 4vw, 22px);
+    pointer-events:none;
+    transition:0.3s;
+}
+
+.input-group input:focus ~ i{
+    color:#1f6f8b;
+    transform:translateY(-50%) scale(1.15);
+}
+
+/* BUTTON */
+.btn-login{
+    width:100%;
+    padding:clamp(15px, 3vw, 18px);
+    border:none;
+    border-radius:50px;
+
+    background:linear-gradient(90deg,#ff9a9e,#fad0c4,#a1c4fd,#c2e9fb);
+    background-size:350%;
+    color:#1e455a;
+    font-size:clamp(17px, 3.8vw, 20px);
+    font-weight:600;
+    cursor:pointer;
+    margin-top:10px;
+
+    animation:gradientMove 6s infinite linear;
+    transition:0.4s;
+    box-shadow:0 12px 25px rgba(150,175,200,0.45);
+}
+
+.btn-login:hover{
+    transform:translateY(-3px) scale(1.05);
+    box-shadow:0 14px 30px rgba(150,175,200,0.55);
+}
+
+@keyframes gradientMove{
+    0%{ background-position:0%; }
+    100%{ background-position:350%; }
+}
+
+/* Forgot Password */
+.forgot-pass{
+    text-align:right;
+    margin-top:-15px;
+    margin-bottom:15px;
+    font-size:clamp(13px, 3vw, 15px);
+}
+
+.forgot-pass a{
+    color:#1b6ca8;
+    text-decoration:none;
+    font-weight:500;
+}
+.forgot-pass a:hover{
+    text-decoration:underline;
+}
+
+/* SIGNUP TEXT */
+.signup-text{
+    text-align:center;
+    margin-top:clamp(18px, 4vw, 25px);
+    color:#2a5d84;
+    font-size:clamp(14px, 4vw, 17px);
+}
+
+.signup-text a{
+    color:#1b6ca8;
+    font-weight:600;
+    text-decoration:none;
+}
+.signup-text a:hover{ text-decoration:underline; }
+
+/* EXTRA SMALL PHONES (<360px) */
+@media (max-width:360px){
+    .input-group i{
+        left:15px;
+    }
+    .input-group input{
+        padding-left:45px;
+    }
+}
+
+/* TABLETS / LARGE DEVICES */
+@media (min-width:768px){
+    body{
+        padding:40px;
+    }
+    .login-box{
+        max-width:520px;
+    }
+}
+
+/* VERY LARGE SCREENS */
+@media (min-width:1500px){
+    .login-box{
+        transform:scale(1.1);
+    }
+}

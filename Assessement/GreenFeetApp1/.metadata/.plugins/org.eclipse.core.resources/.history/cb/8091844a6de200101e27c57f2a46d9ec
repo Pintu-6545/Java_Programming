@@ -1,0 +1,46 @@
+<%@page import="com.bean.DriverView"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+<%
+    DriverView d = (DriverView) session.getAttribute("driver");
+
+    if (d == null) {
+        response.sendRedirect("add-vehicle.jsp");
+        return;
+    }
+%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Add Vehicle</title>
+</head>
+<body>
+
+<h2>Add Vehicle for <%= d.getName() %></h2>
+
+<form method="post" action="VehiclesController">
+
+    <!-- ✅ SESSION BASED driver_id -->
+    <input type="hidden" name="driver_id" value="<%= d.getDriver_id() %>">
+
+    <input type="text" name="number_plate" placeholder="Vehicle Number" required>
+
+    <select name="type" required>
+        <option value="">Select Vehicle</option>
+        <option value="Car">Car</option>
+        <option value="Bike">Bike</option>
+        <option value="Truck">Truck</option>
+    </select>
+
+    <input type="date" name="insurance_expiry" required>
+
+    <button type="submit" name="action" value="insert">
+        Add Vehicle
+    </button>
+</form>
+
+</body>
+</html>

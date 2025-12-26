@@ -1,0 +1,85 @@
+<%@page import="com.bean.Drivers"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<%
+    Drivers d = null;
+    if(session!=null)
+    {
+    	if(session.getAttribute("d")!=null)
+    	{
+    		d=(Drivers)session.getAttribute("d");
+    	}
+    }
+%>
+
+<head>
+<meta charset="UTF-8">
+<title>Ultra AI Logistics</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- FONT & ICONS -->
+<link
+	href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+	rel="stylesheet">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<!-- ================= NAVBAR ================= -->
+	<nav class="navbar">
+		<div class="logo">
+			<span>Admin Dashboard</span>-Logistics
+		</div>
+
+		<div class="menu-toggle" id="menuToggle">
+			<span></span><span></span><span></span>
+		</div>
+
+		<ul class="menu" id="menu">
+			<li class="menu-item"><a href="admin-index.jsp">Dashboard</a></li>
+
+			<li class="menu-item"><a href="#">Routes</a>
+				<ul class="dropdown">
+					<li><a href="#">Add Route</a></li>
+					<li><a href="#">View Route </a></li>
+				</ul></li>
+			<li class="menu-item"><a href="#">Service</a>
+				<ul class="dropdown">
+					<li><a href="add-driver.jsp">Add Driver</a></li>
+					<li><a href="add-vehicle.jsp">Add Vehicle</a></li>
+					<li><a href="#">Add Vehicle Feul</a></li>
+					<li><a href="#">Add Maintanance</a></li>
+				</ul></li>
+
+			
+			<li class="menu-item"><a href="#">Views</a>
+				<ul class="dropdown">
+					<li><a href="view-drivers.jsp">View Drivers</a></li>
+					<li><a href="#">View Vehicles</a></li>
+					<li><a href="#">View Feuls</a></li>
+				</ul></li>
+				<li class="menu-item"><a href="#">Assign</a>
+				<ul class="dropdown">
+					<li><a href="#"> Add Vehicle-Driver</a></li>
+					<li><a href="#">View Vehicles-Driver</a></li>
+					
+				</ul></li>
+			<li class="menu-item"><a href="#">Report</a>
+				<ul class="dropdown">
+					<li><a href="#">Incident Report</a></li>
+					<li><a href="#">Other Report</a></li>
+				</ul></li>
+			<li class="menu-item"><a href="#">Contact</a>
+				<ul class="dropdown">
+					<li><a href="#">Support</a></li>
+					<li><a href="#">Email</a></li>
+				</ul></li>
+		</ul>
+	</nav>
+
+</body>
+</html>

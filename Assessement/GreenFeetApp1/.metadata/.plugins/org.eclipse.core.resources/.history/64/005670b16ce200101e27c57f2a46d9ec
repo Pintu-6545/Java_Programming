@@ -1,0 +1,90 @@
+package com.controller;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+import com.bean.DriverView;
+import com.bean.Drivers;
+import com.bean.Users;
+import com.dao.DriversDao;
+import com.dao.UsersDao;
+
+@WebServlet("/DriverController")
+public class DriverController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		String action = request.getParameter("action");
+
+		if (action.equalsIgnoreCase("insert")) {
+
+			Users u = new Users();
+			u.setUsername(request.getParameter("username"));
+			u.setPassowrd(request.getParameter("password"));
+			u.setRole(request.getParameter("role"));
+			u.setStatus(request.getParameter("status"));
+			u.setEmail(request.getParameter("email"));
+
+			int user_id = UsersDao.insertUsers(u);
+
+			Drivers d = new Drivers();
+			d.setUser_id(user_id);
+			d.setName(request.getParameter("name"));
+			d.setLicense_no(request.getParameter("license_no"));
+			d.setPhone_no(Long.parseLong(request.getParameter("phone_no")));
+
+			DriversDao.insertDrivers(d);
+
+			request.getRequestDispatcher("admin-index.jsp").forward(request, response);
+		}
+
+		else if (action.equalsIgnoreCase("edit")) {
+			int user_id = Integer.parseInt(request.getParameter("user_id"));
+			DriverView d = DriversDao.getByDriver(user_id);
+			request.setAttribute("d", d);
+			request.getRequestDispatcher("update-drivers.jsp").forward(request, response);
+
+		} 
+		
+		else if (action.equalsIgnoreCase("update")) {
+
+		    int user_id = Integer.parseInt(request.getParameter("user_id"));
+		    int driver_id = Integer.parseInt(request.getParameter("driver_id"));
+
+		    Users u = new Users();
+		    u.setUser_id(user_id); 
+		    u.setUsername(request.getParameter("username"));
+		    u.setPassowrd(request.getParameter("password"));
+		    u.setRole(request.getParameter("role"));
+		    u.setStatus(request.getParameter("status"));
+		    u.setEmail(request.getParameter("email"));
+
+		    Drivers d = new Drivers();
+		    d.setDriver_id(driver_id);
+		    d.setUser_id(user_id);
+		    d.setName(request.getParameter("name"));
+		    d.setLicense_no(request.getParameter("license_no"));
+		    d.setPhone_no(Long.parseLong(request.getParameter("phone_no")));
+
+		    DriversDao.updateUserAndDriver(u, d);
+
+		    response.sendRedirect("view-drivers.jsp"); // better than forward
+		}
+		
+		else if(action.equalsIgnoreCase("delete"))
+		{
+			int user_id = Integer.parseInt(request.getParameter("user_id"));
+			
+			DriversDao.deleteDriver(user_id);
+			response.sendRedirect("view-drivers.jsp");
+		}
+
+	}
+
+}

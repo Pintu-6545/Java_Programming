@@ -1,0 +1,108 @@
+package com.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.bean.Drivers;
+import com.bean.Users;
+import com.util.GreenFleetUtil;
+
+public class UsersDao {
+
+	public static int insertUsers(Users u)
+	{
+		int user_id = 0;
+		try {
+			
+			Connection conn=GreenFleetUtil.createConnection();
+			String sql="insert into users (username,password,role,status,email) values(?,?,?,?,?)";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			pst.setString(1, u.getUsername());
+			pst.setString(2, u.getPassowrd());
+			pst.setString(3,u.getRole());
+			pst.setString(4,u.getStatus());
+			pst.setString(5, u.getEmail());
+			pst.executeUpdate();
+			
+			// Get user_id by email
+            String sql2 = "SELECT user_id FROM users WHERE email=?";
+            PreparedStatement pst2 = conn.prepareStatement(sql2);
+            pst2.setString(1, u.getEmail());
+            ResultSet rs = pst2.executeQuery();
+
+            if(rs.next()) {
+                user_id = rs.getInt("user_id");
+            	}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return user_id;
+	}
+	
+	public static boolean checkEmail(String email) {
+        boolean flag = false;
+        try {
+            Connection conn = GreenFleetUtil.createConnection();
+            String sql = "SELECT * FROM users WHERE email=?";
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setString(1, email);
+
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                flag = true; // email exists
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return flag;
+    }
+	
+	public static Users userLogin(String email)
+	{
+		Users u = null;
+		try {
+			Connection conn = GreenFleetUtil.createConnection();
+			String  sql="select * from users where email=?";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			pst.setString(1, email);
+			ResultSet rs = pst.executeQuery();
+			if(rs.next())
+			{
+				u = new Users();
+				u.setUser_id(rs.getInt("user_id"));
+				u.setEmail(rs.getString("email"));
+				u.setPassowrd(rs.getString("password"));
+				u.setRole(rs.getString("role"));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return u;
+	}
+//	public static List<Users> getAllUsers()
+//    {
+//   	 List<Users> list = new ArrayList<Users>();
+//   			 try {
+//					Connection conn = GreenFleetUtil.createConnection();
+//					String sql="select * from users";
+//					PreparedStatement pst = conn.prepareStatement(sql);
+//					ResultSet rs = pst.executeQuery();
+//					while(rs.next())
+//					{	
+//						Users u = new Users();
+//						u.setEmail(rs.getString("email"));
+//						u.setPassowrd(rs.getString("password"));
+//						u.setRole(rs.getString("role"));
+//						u.setStatus(rs.getString("status"));
+//						list.add(u);
+//					}
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//   	 return list;
+//    }
+}

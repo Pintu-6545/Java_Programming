@@ -1,0 +1,37 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Add Vehicle</title>
+</head>
+<body>
+
+<h2>Add Vehicle</h2>
+
+<form action="VehiclesController" method="post">
+
+    <!-- driver_id coming from previous page -->
+    <input type="hidden" name="driver_id" value="<%= request.getParameter("driver_id") %>">
+
+    <label>Number Plate</label><br>
+    <input type="text" name="number_plate" required><br><br>
+
+    <label>Vehicle Type</label><br>
+    <select name="type" required>
+        <option value="">Select</option>
+        <option value="Car">Car</option>
+        <option value="Bike">Bike</option>
+        <option value="Truck">Truck</option>
+    </select><br><br>
+
+    <label>Insurance Expiry</label><br>
+    <input type="date" name="insurance_expiry" required><br><br>
+
+    <input type="submit" value="Add Vehicle">
+
+</form>
+
+</body>
+</html>

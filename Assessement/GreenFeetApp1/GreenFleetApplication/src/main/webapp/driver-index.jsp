@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ultra AI Logistics</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- FONT & ICONS -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar">
+    <div class="logo">
+        <span> Driver Dashboard</span>-Logistics
+    </div>
+
+    <div class="menu-toggle" id="menuToggle">
+        <span></span><span></span><span></span>
+    </div>
+
+    <ul class="menu" id="menu">
+        <li class="menu-item">
+            <a href="#">Home</a>
+            <ul class="dropdown">
+                <li><a href="#">Overview</a></li>
+                <li><a href="#">Updates</a></li>
+                <li><a href="#">Insights</a></li>
+            </ul>
+        </li>
+
+        <li class="menu-item">
+            <a href="#">Services</a>
+            <ul class="dropdown">
+                <li><a href="#">Car</a></li>
+                <li><a href="#">Bike</a></li>
+                <li><a href="#">Truck</a></li>
+            </ul>
+        </li>
+
+        <li class="menu-item">
+            <a href="#">Fleet</a>
+            <ul class="dropdown">
+                <li><a href="#">Live Tracking</a></li>
+                <li><a href="#">AI Routes</a></li>
+            </ul>
+        </li>
+
+        <li class="menu-item">
+            <a href="#">Contact</a>
+            <ul class="dropdown">
+                <li><a href="#">Support</a></li>
+                <li><a href="#">Email</a></li>
+            </ul>
+        </li>
+        <li class="menu-item">
+        <a href="#">Login</a></li>
+    </ul>
+</nav>
+
+<!-- CAROUSEL -->
+<section class="carousel">
+    <div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1601584115197-04ecc0da31d7');">
+        <div class="overlay"></div>
+        <div class="content">
+            <h1>Smart Logistics Network</h1>
+            <p>AI powered transport solutions.</p>
+            <button class="btn">Explore</button>
+        </div>
+    </div>
+    <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1502877338535-766e1452684a');">
+        <div class="overlay"></div>
+        <div class="content">
+            <h1>Heavy Truck Transport</h1>
+            <p>Reliable long-distance delivery.</p>
+            <button class="btn">View</button>
+        </div>
+    </div>
+</section>
+
+<!-- SECTIONS -->
+<section class="section">
+    <h2>Vehicle Categories</h2>
+    <div class="card-grid">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1549921296-3ecf6f9e0b21">
+            <h3>Car Logistics</h3><p>Safe car transport.</p>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a">
+            <h3>Bike Delivery</h3><p>Fast two-wheeler service.</p>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a">
+            <h3>Truck Transport</h3><p>Heavy logistics.</p>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <h2>Fleet Status</h2>
+    <table>
+        <tr><th>Vehicle</th><th>Status</th><th>Tracking</th></tr>
+        <tr><td>Car</td><td>Active</td><td>GPS</td></tr>
+        <tr><td>Bike</td><td>On Route</td><td>Live</td></tr>
+        <tr><td>Truck</td><td>Loading</td><td>AI Route</td></tr>
+    </table>
+</section>
+
+<section class="form-section">
+  <div class="form-wrapper">
+
+    <!-- LEFT INFO -->
+    <div class="form-info">
+      <h2>Book Logistics</h2>
+
+      <div class="info-box">
+        <i class="fa-solid fa-truck-fast"></i>
+        <span>All Vehicle Types Available</span>
+      </div>
+
+      <div class="info-box">
+        <i class="fa-solid fa-location-dot"></i>
+        <span>Pan India Delivery Network</span>
+      </div>
+
+      <div class="info-box">
+        <i class="fa-solid fa-headset"></i>
+        <span>24×7 Customer Support</span>
+      </div>
+    </div>
+
+    <!-- FORM -->
+    <form class="form-box">
+      <div class="input-group">
+        <i class="fa-solid fa-user"></i>
+        <input type="text" placeholder="Full Name" required>
+      </div>
+
+      <div class="input-group">
+        <i class="fa-solid fa-envelope"></i>
+        <input type="email" placeholder="Email Address" required>
+      </div>
+
+      <div class="input-group">
+        <i class="fa-solid fa-phone"></i>
+        <input type="tel" placeholder="Mobile Number" required>
+      </div>
+
+      <div class="input-group">
+        <i class="fa-solid fa-car-side"></i>
+        <select required>
+          <option value="">Select Vehicle Type</option>
+          <option>Car</option>
+          <option>Bike</option>
+          <option>Scooter</option>
+          <option>Mini Truck</option>
+          <option>Truck</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <i class="fa-solid fa-message"></i>
+        <textarea placeholder="Pickup & Delivery Details"></textarea>
+      </div>
+
+      <button type="submit">Submit Booking</button>
+    </form>
+
+  </div>
+</section>
+
+
+<script>
+const slides=document.querySelectorAll(".slide");
+let i=0;
+setInterval(()=>{
+slides[i].classList.remove("active");
+i=(i+1)%slides.length;
+slides[i].classList.add("active");
+},4500);
+</script>
+
+</body>
+</html>

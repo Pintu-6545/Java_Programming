@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ultra Navbar & AI Carousel</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+/* ================= GLOBAL ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: #0f172a;
+    color: #fff;
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(15px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    z-index: 999;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: 700;
+    color: #38bdf8;
+}
+
+.menu {
+    display: flex;
+    gap: 30px;
+}
+
+.menu-item {
+    position: relative;
+}
+
+.menu-item > a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    padding: 10px;
+    transition: 0.3s;
+}
+
+.menu-item > a:hover {
+    color: #38bdf8;
+}
+
+/* Dropdown */
+.dropdown {
+    position: absolute;
+    top: 45px;
+    left: 0;
+    background: rgba(30, 41, 59, 0.95);
+    border-radius: 10px;
+    min-width: 180px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: 0.3s;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+}
+
+.dropdown a {
+    display: block;
+    padding: 12px 15px;
+    color: #cbd5f5;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.dropdown a:hover {
+    background: #38bdf8;
+    color: #000;
+}
+
+.menu-item:hover .dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* ================= CAROUSEL ================= */
+.carousel {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    margin-top: 80px;
+}
+
+.slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0.3));
+}
+
+.content {
+    position: absolute;
+    top: 50%;
+    left: 8%;
+    transform: translateY(-50%);
+    max-width: 600px;
+}
+
+.content h1 {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+.content p {
+    font-size: 18px;
+    margin-bottom: 25px;
+    color: #e2e8f0;
+}
+
+.btn {
+    padding: 14px 30px;
+    border: none;
+    border-radius: 30px;
+    background: linear-gradient(45deg, #38bdf8, #0ea5e9);
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+    .menu {
+        display: none;
+    }
+    .content h1 {
+        font-size: 34px;
+    }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="logo">AI-Brand</div>
+
+    <div class="menu">
+        <div class="menu-item">
+            <a href="#">Home</a>
+            <div class="dropdown">
+                <a href="#">Overview</a>
+                <a href="#">Updates</a>
+                <a href="#">Highlights</a>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <a href="#">Services</a>
+            <div class="dropdown">
+                <a href="#">AI Solutions</a>
+                <a href="#">Web Development</a>
+                <a href="#">Cloud</a>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <a href="#">Products</a>
+            <div class="dropdown">
+                <a href="#">AI Tools</a>
+                <a href="#">Dashboards</a>
+                <a href="#">Automation</a>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <a href="#">About</a>
+            <div class="dropdown">
+                <a href="#">Company</a>
+                <a href="#">Team</a>
+                <a href="#">Careers</a>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <a href="#">Contact</a>
+            <div class="dropdown">
+                <a href="#">Email</a>
+                <a href="#">Support</a>
+                <a href="#">Location</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- CAROUSEL -->
+<section class="carousel">
+    <div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1677442136019-21780ecad995');">
+        <div class="overlay"></div>
+        <div class="content">
+            <h1>AI Powered Innovation</h1>
+            <p>Experience next-generation artificial intelligence solutions.</p>
+            <button class="btn">Explore Now</button>
+        </div>
+    </div>
+
+    <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1555949963-aa79dcee981c');">
+        <div class="overlay"></div>
+        <div class="content">
+            <h1>Smart Automation</h1>
+            <p>Transform your business with intelligent automation.</p>
+            <button class="btn">Get Started</button>
+        </div>
+    </div>
+
+    <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1518770660439-4636190af475');">
+        <div class="overlay"></div>
+        <div class="content">
+            <h1>Future Ready Technology</h1>
+            <p>Build scalable and secure AI driven platforms.</p>
+            <button class="btn">Learn More</button>
+        </div>
+    </div>
+</section>
+
+<!-- SCRIPT -->
+<script>
+let slides = document.querySelectorAll(".slide");
+let index = 0;
+
+function autoSlide() {
+    slides[index].classList.remove("active");
+    index = (index + 1) % slides.length;
+    slides[index].classList.add("active");
+}
+
+setInterval(autoSlide, 4500);
+</script>
+
+</body>
+</html>

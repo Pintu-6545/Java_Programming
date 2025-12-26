@@ -1,0 +1,15 @@
+package com.dao;
+
+import com.bean.Vehicles;
+
+public class VehiclesDao {
+
+	public static void addVehicles(Vehicles v)
+	{
+		try {
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}

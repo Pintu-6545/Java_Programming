@@ -1,0 +1,85 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@include file="header.jsp"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Add New Vehicle</title>
+</head>
+<body>
+	<section class="form-section">
+		<div class="form-wrapper">
+
+			<!-- LEFT INFO -->
+			<div class="form-info">
+				<h2>Resiter New Driver</h2>
+
+				<div class="info-box">
+					<i class="fa-solid fa-truck-fast"></i> <span>All Vehicle
+						Types Available</span>
+				</div>
+
+				<div class="info-box">
+					<i class="fa-solid fa-location-dot"></i> <span>Pan India
+						Delivery Network</span>
+				</div>
+
+				<div class="info-box">
+					<i class="fa-solid fa-headset"></i> <span>24×7 Customer
+						Support</span>
+				</div>
+			</div>
+
+			<!-- FORM -->
+			<form class="form-box" name="frm" method="post" action="DriverController">
+				<div class="input-group">
+					<i class="fa-solid fa-user"></i> <input type="text"
+					 name="name" placeholder="Full Name" required>
+				</div>
+
+				<div class="input-group">
+					<i class="fa-solid fa-envelope"></i> <input type="email"
+					 name="email" placeholder="Email Address" required>
+				</div>
+				
+				<div class="input-group">
+					<i class="fa fa-lock"></i> <input type="password"
+						name="password" placeholder="Password" required>
+				</div>
+				<div class="input-group">
+					<i class="fa fa-lock"></i> <input type="password"
+						name="cpassword" placeholder="Confirm Password" required>
+				</div>
+				<div class="input-group">
+					<i class="fa fa-user"></i> <input type="text"
+					name="username"	placeholder="Enter Username" required>
+				</div>
+				<div class="input-group">
+					<i class="fa-solid fa-phone"></i> <input type="text"
+						name="phone_no" placeholder="Mobile Number" required>
+				</div>
+				<div class="input-group">
+					<i class="fa fa-id-card"></i> <input type="text"
+					name="license_no" placeholder="License Number" required>
+				</div>
+
+				<div class="input-group">
+					<i class="fa-solid fa-car-side"></i> <select name="role" required>
+						<option value="Select Role">Select Role</option>
+         				<option value="driver">Driver</option>
+					</select>
+				</div>
+				<div class="input-group">
+					<i class="fa fa-check-circle"></i> <input type="text"
+					name="status" placeholder="Status" required>
+				</div>
+
+				<button type="submit" name="action" value="insert">Add Driver</button>
+			</form>
+
+		</div>
+	</section>
+
+</body>
+</html>

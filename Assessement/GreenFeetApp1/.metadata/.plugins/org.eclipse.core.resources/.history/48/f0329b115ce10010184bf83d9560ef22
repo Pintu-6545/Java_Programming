@@ -1,0 +1,80 @@
+<%@page import="com.bean.DriverView"%>
+<%@page import="com.dao.DriversDao"%>
+<%@page import="com.bean.Drivers"%>
+<%@page import="com.dao.UsersDao"%>
+<%@page import="com.bean.Users"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@include file="header.jsp"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Display Drivers Data</title>
+</head>
+<body>
+	<section class="section">
+		<h2>Drivers Data</h2>
+		<table>
+			<tr>
+				<th>DID</th>
+				<th>Name</th>
+				<th>Phone No.</th>
+				<th>License No.</th>
+				<th>User ID</th>
+				<th>Email</th>
+				<th>Passowrd</th>
+				<th>Username</th>
+				<th>Role</th>
+				<th>Status</th>
+				<th>Edit</th>
+				<th>Delete</th>
+			</tr>
+			<%
+			List<DriverView> list = DriversDao.getAllDriverDetails();
+		    for(DriverView d : list)
+		      {
+			%>
+			<tr>
+				<td><%=d.getDriver_id() %></td>
+				<td><%=d.getName() %></td>
+				<td><%=d.getPhone_no() %></td>
+				<td><%=d.getLicense_no() %></td>
+				<td><%=d.getUser_id() %></td>
+				<td><%=d.getEmail() %></td>
+				<td><%=d.getPassword() %></td>
+				<td><%=d.getUsername() %></td>
+				<td><%=d.getRole() %></td>
+				<td><%=d.getStatus() %></td>
+				<td>
+					<!-- FORM -->
+					<form class="form-box">
+						<div class="input-group">
+							<i></i> <input type="hidden" name="user_id" value="<%=d.getUser_id() %>"
+								placeholder="Full Name" required>
+						</div>
+						<button type="submit" action="name" value="edit" ><i class="fa-solid fa-pen-to-square"></i>Edit</button>
+					</form>
+
+				</td>
+				<td>
+					<!-- FORM -->
+					<form class="form-box">
+						<div class="input-group">
+							<i></i> <input type="hidden" name="user_id" value="<%=d.getUser_id() %>"
+								placeholder="Full Name" required>
+						</div>
+						<button type="submit" name="action" value="delete"><i class="fa-solid fa-trash-can"></i>Delete</button>
+					</form>
+
+				</td>
+			</tr>
+			<%
+			  }
+			%>
+
+		</table>
+	</section>
+</body>
+</html>

@@ -1,0 +1,47 @@
+package com.controller;
+
+import java.io.IOException;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+@WebServlet("/VehicleController")
+public class VehicleController extends HttpServlet {
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        try {
+            // Step 1: Get parameter safely
+            String idStr = request.getParameter("vehicleId");
+            String name = request.getParameter("vehicleName");
+
+            // Step 2: Validation
+            if (idStr == null || idStr.trim().isEmpty()) {
+                throw new Exception("Vehicle ID is missing");
+            }
+
+            int vehicleId = Integer.parseInt(idStr);
+
+            // Step 3: Print for testing
+            System.out.println("Vehicle ID: " + vehicleId);
+            System.out.println("Vehicle Name: " + name);
+
+            // Step 4: Response
+            response.setContentType("text/html");
+            response.getWriter().println("<h2>Vehicle Added Successfully</h2>");
+            response.getWriter().println("<p>ID: " + vehicleId + "</p>");
+            response.getWriter().println("<p>Name: " + name + "</p>");
+
+        } catch (NumberFormatException e) {
+            response.getWriter().println("Invalid Vehicle ID");
+            e.printStackTrace();
+
+        } catch (Exception e) {
+            response.getWriter().println("Error: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+}

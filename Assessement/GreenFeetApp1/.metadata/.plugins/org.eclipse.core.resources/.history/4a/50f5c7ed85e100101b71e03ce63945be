@@ -1,0 +1,30 @@
+package com.controller;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+import com.bean.Vehicles;
+
+@WebServlet("/VehicleController")
+public class VehicleController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String action = request.getParameter("action");
+		
+		if(action.equalsIgnoreCase("insert"))
+		{
+			Vehicles v = new Vehicles();
+			v.setDriver_id(Integer.parseInt(request.getParameter("driver_id")));
+			v.setNumber_plate(request.getParameter("number_plate"));
+			v.setType(request.getParameter("type"));
+			v.setInsurance_expiry(request.getParameter("insurance_expiry"));
+		}
+	}
+
+}
