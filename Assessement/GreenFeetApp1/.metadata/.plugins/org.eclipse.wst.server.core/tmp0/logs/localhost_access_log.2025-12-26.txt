@@ -165,3 +165,8 @@
 0:0:0:0:0:0:0:1 - - [26/Dec/2025:20:49:02 +0530] "GET /GreenFleetApplication/add-vehicle.jsp HTTP/1.1" 200 4578
 0:0:0:0:0:0:0:1 - - [26/Dec/2025:20:49:16 +0530] "GET /GreenFleetApplication/add-driver.jsp HTTP/1.1" 200 4577
 0:0:0:0:0:0:0:1 - - [26/Dec/2025:20:49:18 +0530] "GET /GreenFleetApplication/add-vehicle.jsp HTTP/1.1" 200 4578
+127.0.0.1 - - [26/Dec/2025:23:54:00 +0530] "GET / HTTP/1.1" 404 751
+0:0:0:0:0:0:0:1 - - [26/Dec/2025:23:54:01 +0530] "GET /GreenFleetApplication/add-vehicle.jsp HTTP/1.1" 200 4578
+0:0:0:0:0:0:0:1 - - [26/Dec/2025:23:54:01 +0530] "GET /GreenFleetApplication/css/index.css HTTP/1.1" 200 8123
+0:0:0:0:0:0:0:1 - - [26/Dec/2025:23:54:01 +0530] "GET /favicon.ico HTTP/1.1" 404 762
+0:0:0:0:0:0:0:1 - - [26/Dec/2025:23:54:04 +0530] "GET /GreenFleetApplication/admin-index.jsp HTTP/1.1" 200 5874

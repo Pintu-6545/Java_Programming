@@ -103,3 +103,14 @@ Dec 26, 2025 19:53:26.10 [15232:15776:1226/195326.101:ERROR:google_apis\gcm\engi
 Dec 26, 2025 19:55:18.84 [15232:15776:1226/195518.846:ERROR:google_apis\gcm\engine\registration_request.cc:292] Registration response error message: DEPRECATED_ENDPOINT
 Dec 26, 2025 19:58:42.21 [15232:15776:1226/195842.214:ERROR:google_apis\gcm\engine\registration_request.cc:292] Registration response error message: DEPRECATED_ENDPOINT
 Dec 26, 2025 20:05:24.43 [15232:15776:1226/200524.431:ERROR:google_apis\gcm\engine\registration_request.cc:292] Registration response error message: DEPRECATED_ENDPOINT
+
+Dec 26, 2025 23:54:00.63 NEW SESSION
+Dec 26, 2025 23:54:00.64 [10704:14992:1226/235400.634:ERROR:components\content_settings\core\browser\content_settings_pref.cc:319] Invalid pattern strings: http://c,d,*
+Dec 26, 2025 23:54:00.64 [10704:14992:1226/235400.634:ERROR:components\content_settings\core\browser\content_settings_pref.cc:319] Invalid pattern strings: http://c,md,*
+Dec 26, 2025 23:54:00.95 Created TensorFlow Lite XNNPACK delegate for CPU.
+Dec 26, 2025 23:54:03.77 [10704:8756:1226/235403.779:ERROR:google_apis\gcm\engine\registration_request.cc:292] Registration response error message: DEPRECATED_ENDPOINT
+Dec 26, 2025 23:54:30.92 [10704:8756:1226/235430.928:ERROR:google_apis\gcm\engine\registration_request.cc:292] Registration response error message: DEPRECATED_ENDPOINT
+Dec 26, 2025 23:55:24.70 [10704:8756:1226/235524.699:ERROR:google_apis\gcm\engine\registration_request.cc:292] Registration response error message: DEPRECATED_ENDPOINT
+Dec 26, 2025 23:57:03.11 [10704:8756:1226/235703.116:ERROR:google_apis\gcm\engine\registration_request.cc:292] Registration response error message: DEPRECATED_ENDPOINT
+Dec 27, 2025 24:00:57.79 [10704:8756:1227/000057.792:ERROR:google_apis\gcm\engine\registration_request.cc:292] Registration response error message: DEPRECATED_ENDPOINT
+Dec 27, 2025 24:07:40.02 [10704:8756:1227/000740.024:ERROR:google_apis\gcm\engine\registration_request.cc:292] Registration response error message: DEPRECATED_ENDPOINT
