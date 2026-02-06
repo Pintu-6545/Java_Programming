@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pseudo-Class Demo</title>
+
+    <style>
+        /* Navigation menu styling */
+        nav a {
+            text-decoration: none;
+            margin-right: 15px;
+            color: blue;
+            font-weight: bold;
+        }
+
+        /* Hover pseudo-class */
+        nav a:hover {
+            color: red;
+            text-decoration: underline;
+        }
+
+        /* Form input styling */
+        input {
+            padding: 8px;
+            margin-top: 10px;
+            border: 2px solid gray;
+        }
+
+        /* Focus pseudo-class */
+        input:focus {
+            border-color: green;
+            background-color: #e6ffe6;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Menu -->
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+    </nav>
+
+    <hr>
+
+    <!-- Form Section -->
+    <h3>Login Form</h3>
+    <form>
+        <label>Username:</label><br>
+        <input type="text"><br><br>
+
+        <label>Password:</label><br>
+        <input type="password"><br><br>
+
+        <input type="submit" value="Login">
+    </form>
+
+</body>
+</html>

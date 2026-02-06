@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+<bean id="s1" class="com.spring.SpringHello.bean.Student" >
+	
+	<constructor-arg name="id" value="1"></constructor-arg>
+	<constructor-arg name="fname" value="Pintu"></constructor-arg>
+	<constructor-arg name="lname" value="Ghanchi"></constructor-arg>
+	<constructor-arg name="email" value="pmodi8800@gmail.com"></constructor-arg>
+</bean>
+</beans>
