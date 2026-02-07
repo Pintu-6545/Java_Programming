@@ -1,0 +1,222 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AI Animated Student Table</title>
+
+<!-- Icons -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+body{
+    margin:0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* Glass Container */
+.table-container{
+    width:95%;
+    backdrop-filter: blur(14px);
+    background: rgba(255,255,255,0.05);
+    border-radius:20px;
+    padding:25px;
+    box-shadow:0 0 40px rgba(0,0,0,0.6);
+    animation: fadeIn 1.2s ease;
+}
+
+/* Title */
+.title{
+    text-align:center;
+    color:#fff;
+    font-size:28px;
+    margin-bottom:20px;
+    letter-spacing:1px;
+}
+
+/* Table */
+table{
+    width:100%;
+    border-collapse:collapse;
+    color:#fff;
+}
+
+thead{
+    background:linear-gradient(90deg,#00c6ff,#0072ff);
+}
+
+th{
+    padding:14px;
+    text-transform:uppercase;
+    font-size:13px;
+    letter-spacing:1px;
+}
+
+td{
+    padding:12px;
+    text-align:center;
+    font-size:14px;
+}
+
+/* Row Hover Effect */
+tbody tr{
+    transition:0.4s;
+}
+
+tbody tr:hover{
+    background:rgba(0,255,255,0.12);
+    transform:scale(1.01);
+    box-shadow:0 0 15px cyan;
+}
+
+/* Icons */
+.icon{
+    margin-right:6px;
+    color:#00eaff;
+}
+
+/* Buttons */
+.btn{
+    padding:7px 14px;
+    border:none;
+    border-radius:25px;
+    cursor:pointer;
+    font-size:13px;
+    color:#fff;
+    transition:0.4s;
+}
+
+/* Edit Button */
+.edit{
+    background:linear-gradient(45deg,#00b09b,#96c93d);
+}
+
+.edit:hover{
+    transform:translateY(-2px);
+    box-shadow:0 0 12px #00ffcc;
+}
+
+/* Delete Button */
+.delete{
+    background:linear-gradient(45deg,#ff416c,#ff4b2b);
+}
+
+.delete:hover{
+    transform:translateY(-2px);
+    box-shadow:0 0 12px #ff4b2b;
+}
+
+/* Animation */
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(40px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="table-container">
+
+<div class="title">
+    <i class="fa-solid fa-database"></i> Student Master Table
+</div>
+
+<table>
+
+<thead>
+<tr>
+<th><i class="fa-solid fa-id-card icon"></i>SID</th>
+<th><i class="fa-solid fa-user icon"></i>First Name</th>
+<th><i class="fa-solid fa-user icon"></i>Last Name</th>
+<th><i class="fa-solid fa-phone icon"></i>Mobile</th>
+<th><i class="fa-solid fa-envelope icon"></i>Email</th>
+<th><i class="fa-solid fa-lock icon"></i>Password</th>
+<th><i class="fa-solid fa-graduation-cap icon"></i>Education</th>
+<th><i class="fa-solid fa-venus-mars icon"></i>Gender</th>
+<th><i class="fa-solid fa-om icon"></i>Religion</th>
+<th><i class="fa-solid fa-layer-group icon"></i>Category</th>
+<th><i class="fa-solid fa-location-dot icon"></i>Address</th>
+<th><i class="fa-solid fa-city icon"></i>City</th>
+<th><i class="fa-solid fa-mail-bulk icon"></i>Zipcode</th>
+<th><i class="fa-solid fa-map icon"></i>District</th>
+<th><i class="fa-solid fa-flag icon"></i>State</th>
+<th>Action</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>101</td>
+<td>Pintu</td>
+<td>Ghanchi</td>
+<td>9876543210</td>
+<td>pintu@gmail.com</td>
+<td>******</td>
+<td>BCA</td>
+<td>Male</td>
+<td>Hindu</td>
+<td>OBC</td>
+<td>Bapunagar</td>
+<td>Ahmedabad</td>
+<td>380024</td>
+<td>Ahmedabad</td>
+<td>Gujarat</td>
+
+<td>
+<button class="btn edit">
+<i class="fa-solid fa-pen-to-square"></i> Edit
+</button>
+
+<button class="btn delete">
+<i class="fa-solid fa-trash"></i> Delete
+</button>
+</td>
+</tr>
+
+<tr>
+<td>102</td>
+<td>Rahul</td>
+<td>Patel</td>
+<td>9998887776</td>
+<td>rahul@gmail.com</td>
+<td>******</td>
+<td>MCA</td>
+<td>Male</td>
+<td>Hindu</td>
+<td>General</td>
+<td>Nikol</td>
+<td>Ahmedabad</td>
+<td>382350</td>
+<td>Ahmedabad</td>
+<td>Gujarat</td>
+
+<td>
+<button class="btn edit">
+<i class="fa-solid fa-pen-to-square"></i> Edit
+</button>
+
+<button class="btn delete">
+<i class="fa-solid fa-trash"></i> Delete
+</button>
+</td>
+</tr>
+
+</tbody>
+
+</table>
+</div>
+
+</body>
+</html>
+    

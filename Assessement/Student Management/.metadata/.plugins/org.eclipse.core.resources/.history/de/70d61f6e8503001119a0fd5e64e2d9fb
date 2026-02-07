@@ -1,0 +1,21 @@
+package com.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+import com.bean.Student;
+import com.util.StudentUtil;
+
+public class StudentDao {
+		
+		public static void insertStudent(Student s)
+		{
+			
+			Connection conn = StudentUtil.createConnection();
+			String sql="insert into students(fname,lname,mobile,email,passowrd,education,gender,religion,category,address,city,zipcode,district,state) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			
+			
+		}
+	
+}

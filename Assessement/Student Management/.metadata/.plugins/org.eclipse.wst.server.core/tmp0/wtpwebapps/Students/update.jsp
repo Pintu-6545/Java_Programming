@@ -1,0 +1,151 @@
+<%@page import="com.bean.Student"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Student Update Form</title>
+
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+	<div class="form-container">
+		<b style="color:green">
+    <%
+    	Student s = (Student)request.getAttribute("s");
+        if(request.getAttribute("msg")!=null)
+        {
+        	out.println(request.getAttribute("msg"));
+        }
+    %>
+    </b>
+		
+		</b>
+
+		<div class="title">
+			<i class="fa-solid fa-user-astronaut"></i> Student Update Form
+		</div>
+
+		<!-- Profile Upload -->
+		<div class="profile-upload">
+			<label class="profile-box"> <img id="preview"
+				src="https://cdn-icons-png.flaticon.com/512/149/149071.png" />
+				<div class="upload-text">Select Photo</div> <input type="file"
+				accept="image/*" hidden onchange="loadImage(event)">
+			</label>
+		</div>
+
+		<form name="frm" method="post" action="StudentController">
+
+			<input type="hidden" name="sid" value="<%=s.getSid()%>">
+
+			<div class="form-grid">
+
+				<div class="input-group">
+					<i class="fa fa-user"></i> <input type="text" name="fname"
+						value="<%=s.getFname()%>" placeholder="First Name">
+				</div>
+
+				<div class="input-group">
+					<i class="fa fa-user"></i> <input type="text" name="lname"
+						value="<%=s.getLname()%>" placeholder="Last Name">
+				</div>
+
+				<div class="input-group">
+					<i class="fa fa-phone"></i> <input type="text" name="mobile"
+						value="<%=s.getMobile()%>" placeholder="Mobile">
+				</div>
+
+				<div class="input-group">
+					<i class="fa fa-envelope"></i> <input type="email" name="email"
+						value="<%=s.getEmail()%>" placeholder="Email">
+				</div>
+
+				<div class="input-group">
+					<i class="fa fa-lock"></i> <input type="password" name="password"
+						value="<%=s.getPassword()%>" placeholder="Password">
+				</div>
+
+				<div class="input-group">
+					<i class="fa fa-graduation-cap"></i> <input type="text"
+						name="education" value="<%=s.getEducation()%>"
+						placeholder="Education">
+				</div>
+
+				<div class="input-group">
+					<i class="fa fa-venus-mars"></i> <select name="gender">
+						<option value="Male"
+							<%="Male".equals(s.getGender()) ? "selected" : ""%>>
+							Male</option>
+
+						<option value="Female"
+							<%="Female".equals(s.getGender()) ? "selected" : ""%>>
+							Female</option>
+
+						<option value="Other"
+							<%="Other".equals(s.getGender()) ? "selected" : ""%>>
+							Other</option>
+					</select>
+				</div>
+
+				<div class="input-group">
+					<i class="fa fa-globe"></i> <input type="text" name="religion"
+						value="<%=s.getReligion()%>" placeholder="Religion">
+				</div>
+
+				<div class="input-group">
+					<i class="fa fa-layer-group"></i> <input type="text"
+						name="category" value="<%=s.getCategory()%>"
+						placeholder="Category">
+				</div>
+
+				<div class="input-group full">
+					<i class="fa fa-home"></i> <input type="text" name="address"
+						value="<%=s.getAddress()%>" placeholder="Address">
+				</div>
+
+				<div class="input-group">
+					<i class="fa fa-city"></i> <input type="text" name="city"
+						value="<%=s.getCity()%>" placeholder="City">
+				</div>
+
+				<div class="input-group">
+					<i class="fa fa-map-pin"></i> <input type="text" name="zipcode"
+						value="<%=s.getZipcode()%>" placeholder="Zipcode">
+				</div>
+
+				<div class="input-group">
+					<i class="fa fa-building"></i> <input type="text" name="district"
+						value="<%=s.getDistrict()%>" placeholder="District">
+				</div>
+
+				<div class="input-group">
+					<i class="fa fa-flag"></i> <input type="text" name="state"
+						value="<%=s.getState()%>" placeholder="State">
+				</div>
+
+			</div>
+
+			<button class="btn" name="action" value="update">Update
+				Student</button>
+
+		</form>
+		```
+
+	</div>
+
+	<script>
+		function loadImage(event) {
+			const preview = document.getElementById('preview');
+			preview.src = URL.createObjectURL(event.target.files[0]);
+		}
+	</script>
+
+</body>
+</html>

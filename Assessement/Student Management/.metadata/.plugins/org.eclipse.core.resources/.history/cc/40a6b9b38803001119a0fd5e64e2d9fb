@@ -1,0 +1,298 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AI Animated Registration Form</title>
+
+  <!-- Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #6a11cb, #ff4ecd, #2575fc);
+      padding: 20px;
+    }
+
+    .form-container {
+      width: 100%;
+      max-width: 1100px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(20px);
+      border-radius: 25px;
+      padding: 40px;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+      animation: fadeIn 0.8s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(40px);} 
+      to { opacity: 1; transform: translateY(0);} 
+    }
+
+    .title {
+      text-align: center;
+      color: #fff;
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 25px;
+    }
+
+    /* Profile Upload */
+    .profile-upload {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .profile-box {
+      position: relative;
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: linear-gradient(135deg,#ff4ecd,#6a11cb);
+      padding: 4px;
+      cursor: pointer;
+      transition: 0.4s;
+    }
+
+    .profile-box:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    }
+
+    .profile-box img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #fff;
+    }
+
+    .upload-text {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.55);
+      color: #fff;
+      font-size: 14px;
+      border-radius: 50%;
+      opacity: 0;
+      transition: 0.3s;
+    }
+
+    .profile-box:hover .upload-text {
+      opacity: 1;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+      gap: 20px;
+    }
+
+    .input-group {
+      position: relative;
+    }
+
+    .input-group i {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #666;
+    }
+
+    .input-group input,
+    .input-group select {
+      width: 100%;
+      padding: 12px 12px 12px 42px;
+      border-radius: 14px;
+      border: none;
+      outline: none;
+      background: rgba(255,255,255,0.9);
+      transition: 0.3s;
+      font-size: 14px;
+    }
+
+    .input-group input:hover,
+    .input-group select:hover {
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      transform: translateY(-2px);
+    }
+
+    .input-group input:focus,
+    .input-group select:focus {
+      box-shadow: 0 0 0 2px #6a11cb;
+    }
+
+    .full {
+      grid-column: 1 / -1;
+    }
+
+    /* Button */
+    .btn {
+      margin-top: 25px;
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 18px;
+      font-size: 18px;
+      font-weight: 600;
+      color: #fff;
+      cursor: pointer;
+      background: linear-gradient(135deg,#ff4ecd,#6a11cb,#2575fc);
+      transition: 0.4s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+
+    .btn::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,0.25);
+      opacity: 0;
+      transition: 0.4s;
+    }
+
+    .btn:hover::after {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+
+    <div class="title">
+      <i class="fa-solid fa-user-astronaut"></i>
+      AI Registration Form
+    </div>
+
+    <!-- Profile Upload -->
+    <div class="profile-upload">
+      <label class="profile-box">
+        <img id="preview" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" />
+        <div class="upload-text">Select Photo</div>
+        <input type="file" accept="image/*" hidden onchange="loadImage(event)">
+      </label>
+    </div>
+
+    <form>
+      <div class="form-grid">
+
+        <div class="input-group">
+          <i class="fa fa-user"></i>
+          <input type="text" placeholder="First Name">
+        </div>
+
+        <div class="input-group">
+          <i class="fa fa-user"></i>
+          <input type="text" placeholder="Last Name">
+        </div>
+
+        <div class="input-group">
+          <i class="fa fa-phone"></i>
+          <input type="text" placeholder="Mobile">
+        </div>
+
+        <div class="input-group">
+          <i class="fa fa-envelope"></i>
+          <input type="email" placeholder="Email">
+        </div>
+
+        <div class="input-group">
+          <i class="fa fa-lock"></i>
+          <input type="password" placeholder="Password">
+        </div>
+
+        <div class="input-group">
+          <i class="fa fa-graduation-cap"></i>
+          <input type="text" placeholder="Education">
+        </div>
+
+        <div class="input-group">
+          <i class="fa fa-venus-mars"></i>
+          <select>
+            <option>Gender</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <i class="fa fa-globe"></i>
+          <input type="text" placeholder="Religion">
+        </div>
+
+        <div class="input-group">
+          <i class="fa fa-layer-group"></i>
+          <input type="text" placeholder="Category">
+        </div>
+
+        <div class="input-group full">
+          <i class="fa fa-home"></i>
+          <input type="text" placeholder="Address">
+        </div>
+
+        <div class="input-group">
+          <i class="fa fa-city"></i>
+          <input type="text" placeholder="City">
+        </div>
+
+        <div class="input-group">
+          <i class="fa fa-map-pin"></i>
+          <input type="text" placeholder="Zipcode">
+        </div>
+
+        <div class="input-group">
+          <i class="fa fa-building"></i>
+          <input type="text" placeholder="District">
+        </div>
+
+        <div class="input-group">
+          <i class="fa fa-flag"></i>
+          <input type="text" placeholder="State">
+        </div>
+
+      </div>
+
+      <button class="btn">Submit Registration</button>
+    </form>
+
+  </div>
+
+  <script>
+    function loadImage(event) {
+      const preview = document.getElementById('preview');
+      preview.src = URL.createObjectURL(event.target.files[0]);
+    }
+  </script>
+
+</body>
+</html>

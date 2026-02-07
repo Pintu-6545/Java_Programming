@@ -1,0 +1,178 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+import React from "react";
+import { motion } from "framer-motion";
+import {
+  User,
+  Phone,
+  Mail,
+  Lock,
+  GraduationCap,
+  MapPin,
+  Home,
+  Building2,
+  Globe,
+} from "lucide-react";
+
+export default function AIAnimatedRegistrationForm() {
+  const inputClass =
+    "w-full pl-12 pr-4 py-3 rounded-2xl border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 outline-none transition-all duration-300 hover:shadow-lg bg-white/70 backdrop-blur-md";
+
+  const iconClass =
+    "absolute left-4 top-1/2 -translate-y-1/2 text-gray-500";
+
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-600 via-pink-500 to-indigo-600 p-6">
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="w-full max-w-4xl bg-white/20 backdrop-blur-xl rounded-3xl shadow-2xl p-10"
+      >
+        {/* Title */}
+        <motion.h1
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.2 }}
+          className="text-3xl font-bold text-white text-center mb-4 flex items-center justify-center gap-3"
+        >
+          <User size={34} className="text-yellow-300 drop-shadow-lg" />
+          AI Generated Registration Form
+        </motion.h1>
+
+        {/* Profile Picture Upload */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="flex flex-col items-center mb-8"
+        >
+          <div className="relative group">
+            <div className="w-32 h-32 rounded-full bg-gradient-to-br from-purple-500 via-pink-500 to-indigo-600 p-1 shadow-xl">
+              <div className="w-full h-full rounded-full bg-white flex items-center justify-center overflow-hidden">
+                <User size={60} className="text-gray-400" />
+              </div>
+            </div>
+
+            {/* Hover Upload Icon */}
+            <label className="absolute inset-0 flex items-center justify-center bg-black/50 rounded-full opacity-0 group-hover:opacity-100 cursor-pointer transition duration-300">
+              <span className="text-white text-sm font-semibold">Select Photo</span>
+              <input type="file" accept="image/*" className="hidden" />
+            </label>
+          </div>
+
+          <p className="text-white/90 text-sm mt-3">Upload Profile Picture</p>
+        </motion.div>
+
+        <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* First Name */}
+          <div className="relative">
+            <User className={iconClass} />
+            <input type="text" placeholder="First Name" className={inputClass} />
+          </div>
+
+          {/* Last Name */}
+          <div className="relative">
+            <User className={iconClass} />
+            <input type="text" placeholder="Last Name" className={inputClass} />
+          </div>
+
+          {/* Mobile */}
+          <div className="relative">
+            <Phone className={iconClass} />
+            <input type="tel" placeholder="Mobile Number" className={inputClass} />
+          </div>
+
+          {/* Email */}
+          <div className="relative">
+            <Mail className={iconClass} />
+            <input type="email" placeholder="Email Address" className={inputClass} />
+          </div>
+
+          {/* Password */}
+          <div className="relative">
+            <Lock className={iconClass} />
+            <input type="password" placeholder="Password" className={inputClass} />
+          </div>
+
+          {/* Education */}
+          <div className="relative">
+            <GraduationCap className={iconClass} />
+            <input type="text" placeholder="Education" className={inputClass} />
+          </div>
+
+          {/* Gender */}
+          <div className="relative">
+            <User className={iconClass} />
+            <select className={inputClass}>
+              <option>Gender</option>
+              <option>Male</option>
+              <option>Female</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          {/* Religion */}
+          <div className="relative">
+            <Globe className={iconClass} />
+            <input type="text" placeholder="Religion" className={inputClass} />
+          </div>
+
+          {/* Category */}
+          <div className="relative">
+            <Building2 className={iconClass} />
+            <input type="text" placeholder="Category" className={inputClass} />
+          </div>
+
+          {/* Address */}
+          <div className="relative md:col-span-2">
+            <Home className={iconClass} />
+            <input type="text" placeholder="Address" className={inputClass} />
+          </div>
+
+          {/* City */}
+          <div className="relative">
+            <MapPin className={iconClass} />
+            <input type="text" placeholder="City" className={inputClass} />
+          </div>
+
+          {/* Zipcode */}
+          <div className="relative">
+            <MapPin className={iconClass} />
+            <input type="text" placeholder="Zip Code" className={inputClass} />
+          </div>
+
+          {/* District */}
+          <div className="relative">
+            <Building2 className={iconClass} />
+            <input type="text" placeholder="District" className={inputClass} />
+          </div>
+
+          {/* State */}
+          <div className="relative">
+            <Globe className={iconClass} />
+            <input type="text" placeholder="State" className={inputClass} />
+          </div>
+
+          {/* Submit Button */}
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="md:col-span-2 mt-4"
+          >
+            <button
+              type="submit"
+              className="w-full py-4 rounded-2xl text-white font-semibold text-lg bg-gradient-to-r from-purple-600 via-pink-500 to-indigo-600 shadow-lg hover:shadow-2xl transition-all duration-300 relative overflow-hidden"
+            >
+              <span className="relative z-10">Submit Registration</span>
+
+              {/* Button Shine Animation */}
+              <span className="absolute inset-0 bg-white/20 opacity-0 hover:opacity-100 transition-opacity duration-500"></span>
+            </button>
+          </motion.div>
+        </form>
+      </motion.div>
+    </div>
+  );
+}
+    

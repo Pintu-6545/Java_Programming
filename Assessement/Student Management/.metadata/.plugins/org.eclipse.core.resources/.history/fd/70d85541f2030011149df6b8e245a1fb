@@ -1,0 +1,78 @@
+package com.controller;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+import com.bean.Student;
+import com.dao.StudentDao;
+
+@WebServlet("/StudentController")
+public class StudentController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String action=request.getParameter("action");
+		
+		if(action.equalsIgnoreCase("insert"))
+		{
+			Student s = new Student();
+			s.setFname(request.getParameter("fname"));
+			s.setLname(request.getParameter("lname"));
+			s.setMobile(Long.parseLong(request.getParameter("mobile")));
+			s.setEmail(request.getParameter("email"));
+			s.setPassword(request.getParameter("password"));
+			s.setEducation(request.getParameter("education"));
+			s.setGender(request.getParameter("gender"));
+			s.setReligion(request.getParameter("religion"));
+			s.setCategory(request.getParameter("category"));
+			s.setAddress(request.getParameter("address"));
+			s.setCity(request.getParameter("city"));
+			s.setZipcode(Long.parseLong(request.getParameter("zipcode")));
+			s.setDistrict(request.getParameter("district"));
+			s.setState(request.getParameter("state"));
+			
+			StudentDao.insertStudent(s);
+			request.setAttribute("msg", "Student Registration Successfully!...");
+			request.getRequestDispatcher("index.jsp").forward(request, response);
+		}
+		
+		else if(action.equalsIgnoreCase("edit"))
+		{
+			int sid=Integer.parseInt(request.getParameter("sid"));
+			 Student s = StudentDao.getStudent(sid);
+			 request.setAttribute("s", s);
+			 request.getRequestDispatcher("update.jps").forward(request, response);
+			
+		}
+		
+		else if(action.equalsIgnoreCase("update"))
+		{
+			Student s = new Student();
+			s.setSid(Integer.parseInt(request.getParameter("sid")));
+			s.setFname(request.getParameter("fname"));
+			s.setLname(request.getParameter("lname"));
+			s.setMobile(Long.parseLong(request.getParameter("mobile")));
+			s.setEmail(request.getParameter("email"));
+			s.setPassword(request.getParameter("password"));
+			s.setEducation(request.getParameter("education"));
+			s.setGender(request.getParameter("gender"));
+			s.setReligion(request.getParameter("religion"));
+			s.setCategory(request.getParameter("category"));
+			s.setAddress(request.getParameter("address"));
+			s.setCity(request.getParameter("city"));
+			s.setZipcode(Long.parseLong(request.getParameter("zipcode")));
+			s.setDistrict(request.getParameter("district"));
+			s.setState(request.getParameter("state"));
+			
+			StudentDao.updateStudent(s);
+			response.sendRedirect("view.jsp");
+				
+			}
+	}
+	
+}

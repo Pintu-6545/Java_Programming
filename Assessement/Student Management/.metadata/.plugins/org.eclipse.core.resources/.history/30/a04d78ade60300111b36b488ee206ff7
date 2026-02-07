@@ -1,0 +1,92 @@
+<%@page import="com.dao.StudentDao"%>
+<%@page import="com.bean.Student"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Student Table</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="css/view.css">
+</head>
+
+<body>
+
+<div class="table-container">
+
+<div class="title">
+<i class="fa-solid fa-database"></i>
+Student Master Record
+</div>
+
+<table>
+
+<thead>
+<tr>
+<th><i class="fa fa-id-card icon"></i>SID</th>
+<th><i class="fa fa-user icon"></i>First</th>
+<th><i class="fa fa-user icon"></i>Last</th>
+<th><i class="fa fa-phone icon"></i>Mobile</th>
+<th><i class="fa fa-envelope icon"></i>Email</th>
+<th><i class="fa fa-lock icon"></i>Password</th>
+<th><i class="fa fa-graduation-cap icon"></i>Education</th>
+<th><i class="fa fa-venus-mars icon"></i>Gender</th>
+<th><i class="fa fa-om icon"></i>Religion</th>
+<th><i class="fa fa-layer-group icon"></i>Category</th>
+<th><i class="fa fa-location-dot icon"></i>Address</th>
+<th><i class="fa fa-city icon"></i>City</th>
+<th><i class="fa fa-mail-bulk icon"></i>Zip</th>
+<th><i class="fa fa-map icon"></i>District</th>
+<th><i class="fa fa-flag icon"></i>State</th>
+<th>Action</th>
+</tr>
+</thead>
+
+<tbody>
+<%
+	List<Student> list = StudentDao.getAllEmployees();
+   		for(Student s:list)
+   		{
+%>
+<tr>
+<td><%=s.getSid() %></td>
+<td>Pintu</td>
+<td>Ghanchi</td>
+<td>9876543210</td>
+<td>pintu@gmail.com</td>
+<td>******</td>
+<td>BCA</td>
+<td>Male</td>
+<td>Hindu</td>
+<td>OBC</td>
+<td>Bapunagar</td>
+<td>Ahmedabad</td>
+<td>380024</td>
+<td>Ahmedabad</td>
+<td>Gujarat</td>
+
+<td>
+<button class="btn edit">
+<i class="fa fa-pen"></i> Edit
+</button>
+
+<button class="btn delete">
+<i class="fa fa-trash"></i> Delete
+</button>
+</td>
+</tr>
+<% 
+   		}
+%>
+</tbody>
+
+</table>
+</div>
+
+</body>
+</html>
+    

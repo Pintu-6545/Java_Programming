@@ -1,0 +1,136 @@
+<%@page import="com.bean.Student"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Student Registration Form</title>
+
+<!-- Icons -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+	<div class="form-container">
+
+		<b style="color:green">
+		
+		<%
+				Student s = (Student)request.getAttribute("s");
+			 if(request.getAttribute("msg")!=null)
+			 {
+				 out.println(request.getParameter("msg"));
+			 }
+				
+		%>
+
+		<div class="title">
+			<i class="fa-solid fa-user-astronaut"></i> Student Update Form
+		</div>
+
+		<!-- Profile Upload -->
+		<div class="profile-upload">
+			<label class="profile-box"> <img id="preview"
+				src="https://cdn-icons-png.flaticon.com/512/149/149071.png" />
+				<div class="upload-text">Select Photo</div> <input type="file"
+				accept="image/*" hidden onchange="loadImage(event)">
+			</label>
+		</div>
+
+		<form name="frm" method="post" action="StudentController">
+			<div class="form-grid">
+
+				<div class="input-group">
+					<i class="fa fa-user"></i> <input type="text"
+						placeholder="First Name" name="fname" >
+				</div>
+
+				<div class="input-group">
+					<i class="fa fa-user"></i> <input type="text"
+						placeholder="Last Name" name="lname">
+				</div>
+
+				<div class="input-group">
+					<i class="fa fa-phone"></i> <input type="text" placeholder="Mobile"
+						name="mobile">
+				</div>
+
+				<div class="input-group">
+					<i class="fa fa-envelope"></i> <input type="email"
+						placeholder="Email" name="email">
+				</div>
+
+				<div class="input-group">
+					<i class="fa fa-lock"></i> <input type="password"
+						placeholder="Password" name="password">
+				</div>
+
+				<div class="input-group">
+					<i class="fa fa-graduation-cap"></i> <input type="text"
+						placeholder="Education" name="education">
+				</div>
+
+				<div class="input-group">
+					<i class="fa fa-venus-mars"></i> <select name="gender">
+						<option>Male</option>
+						<option>Female</option>
+						<option>Other</option>
+					</select>
+				</div>
+
+				<div class="input-group">
+					<i class="fa fa-globe"></i> <input type="text"
+						placeholder="Religion" name="religion">
+				</div>
+
+				<div class="input-group">
+					<i class="fa fa-layer-group"></i> <input type="text"
+						placeholder="Category" name="category">
+				</div>
+
+				<div class="input-group full">
+					<i class="fa fa-home"></i> <input type="text" placeholder="Address"
+						name="address">
+				</div>
+
+				<div class="input-group">
+					<i class="fa fa-city"></i> <input type="text" placeholder="City"
+						name="city">
+				</div>
+
+				<div class="input-group">
+					<i class="fa fa-map-pin"></i> <input type="text"
+						placeholder="Zipcode" name="zipcode">
+				</div>
+
+				<div class="input-group">
+					<i class="fa fa-building"></i> <input type="text"
+						placeholder="District" name="district">
+				</div>
+
+				<div class="input-group">
+					<i class="fa fa-flag"></i> <input type="text" placeholder="State"
+						name="state">
+				</div>
+
+			</div>
+
+			<button class="btn" name="action" value="update">Update
+				Student</button>
+
+		</form>
+
+	</div>
+
+	<script>
+    function loadImage(event) {
+      const preview = document.getElementById('preview');
+      preview.src = URL.createObjectURL(event.target.files[0]);
+    }
+  </script>
+
+</body>
+</html>

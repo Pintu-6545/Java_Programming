@@ -1,0 +1,119 @@
+/* Background */
+body{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    background:
+    radial-gradient(circle at 10% 20%, #0f172a, #020617 90%);
+    height:50vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#fff;
+}
+
+/* Glass Container */
+.table-container{
+    width:96%;
+    padding:25px;
+    border-radius:22px;
+    background:rgba(255,255,255,0.04);
+    backdrop-filter:blur(18px);
+    box-shadow:
+    0 0 40px rgba(0,0,0,0.7),
+    inset 0 0 25px rgba(255,255,255,0.05);
+    animation:fadeIn 1s ease;
+}
+
+/* Title */
+.title{
+    text-align:center;
+    font-size:28px;
+    margin-bottom:20px;
+    background:linear-gradient(90deg,#22d3ee,#a78bfa);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    font-weight:600;
+}
+
+/* Table */
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+/* Header */
+thead{
+    background:linear-gradient(90deg,#06b6d4,#6366f1);
+}
+
+th{
+    padding:14px;
+    font-size:13px;
+    letter-spacing:1px;
+}
+
+/* Cells */
+td{
+    padding:12px;
+    text-align:center;
+    font-size:14px;
+    border-bottom:1px solid rgba(255,255,255,0.05);
+}
+
+/* Row Hover */
+tbody tr{
+    transition:0.35s;
+}
+
+tbody tr:hover{
+    background:linear-gradient(
+    90deg,
+    rgba(34,211,238,0.15),
+    rgba(167,139,250,0.15)
+    );
+    transform:scale(1.01);
+    box-shadow:0 0 18px rgba(34,211,238,0.35);
+}
+
+/* Icons */
+.icon{
+    color:#22d3ee;
+    margin-right:6px;
+}
+
+/* Buttons Base */
+.btn{
+    border:none;
+    padding:7px 16px;
+    border-radius:25px;
+    color:#fff;
+    cursor:pointer;
+    font-size:13px;
+    transition:0.35s;
+}
+
+/* Edit Button */
+.edit{
+    background:linear-gradient(45deg,#22c55e,#4ade80);
+}
+
+.edit:hover{
+    box-shadow:0 0 15px #22c55e;
+    transform:translateY(-2px);
+}
+
+/* Delete Button */
+.delete{
+    background:linear-gradient(45deg,#f43f5e,#fb7185);
+}
+
+.delete:hover{
+    box-shadow:0 0 15px #f43f5e;
+    transform:translateY(-2px);
+}
+
+/* Animation */
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(40px);}
+    to{opacity:1; transform:translateY(0);}
+}

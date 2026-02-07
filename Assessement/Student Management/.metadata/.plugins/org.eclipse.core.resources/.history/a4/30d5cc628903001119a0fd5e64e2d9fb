@@ -1,0 +1,127 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Student Registration Form</title>
+
+  <!-- Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="form-container">
+
+    <div class="title">
+      <i class="fa-solid fa-user-astronaut"></i>
+      Student Registration Form
+    </div>
+
+    <!-- Profile Upload -->
+    <div class="profile-upload">
+      <label class="profile-box">
+        <img id="preview" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" />
+        <div class="upload-text">Select Photo</div>
+        <input type="file" accept="image/*" hidden onchange="loadImage(event)">
+      </label>
+    </div>
+
+    <form>
+      <div class="form-grid">
+
+        <div class="input-group">
+          <i class="fa fa-user"></i>
+          <input type="text" placeholder="First Name">
+        </div>
+
+        <div class="input-group">
+          <i class="fa fa-user"></i>
+          <input type="text" placeholder="Last Name">
+        </div>
+
+        <div class="input-group">
+          <i class="fa fa-phone"></i>
+          <input type="text" placeholder="Mobile">
+        </div>
+
+        <div class="input-group">
+          <i class="fa fa-envelope"></i>
+          <input type="email" placeholder="Email">
+        </div>
+
+        <div class="input-group">
+          <i class="fa fa-lock"></i>
+          <input type="password" placeholder="Password">
+        </div>
+
+        <div class="input-group">
+          <i class="fa fa-graduation-cap"></i>
+          <input type="text" placeholder="Education">
+        </div>
+
+        <div class="input-group">
+          <i class="fa fa-venus-mars"></i>
+          <select>
+            <option>Gender</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <i class="fa fa-globe"></i>
+          <input type="text" placeholder="Religion">
+        </div>
+
+        <div class="input-group">
+          <i class="fa fa-layer-group"></i>
+          <input type="text" placeholder="Category">
+        </div>
+
+        <div class="input-group full">
+          <i class="fa fa-home"></i>
+          <input type="text" placeholder="Address">
+        </div>
+
+        <div class="input-group">
+          <i class="fa fa-city"></i>
+          <input type="text" placeholder="City">
+        </div>
+
+        <div class="input-group">
+          <i class="fa fa-map-pin"></i>
+          <input type="text" placeholder="Zipcode">
+        </div>
+
+        <div class="input-group">
+          <i class="fa fa-building"></i>
+          <input type="text" placeholder="District">
+        </div>
+
+        <div class="input-group">
+          <i class="fa fa-flag"></i>
+          <input type="text" placeholder="State">
+        </div>
+
+      </div>
+
+      <button class="btn">Submit Registration</button>
+    </form>
+
+  </div>
+
+  <script>
+    function loadImage(event) {
+      const preview = document.getElementById('preview');
+      preview.src = URL.createObjectURL(event.target.files[0]);
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+package com.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+import com.bean.Student;
+import com.util.StudentUtil;
+
+public class StudentDao {
+		
+		public static void insertStudent(Student s)
+		{
+			
+			try {
+				
+				Connection conn = StudentUtil.createConnection();
+				String sql="insert into students(fname,lname,mobile,email,passoword,education,gender,religion,category,address,city,zipcode,district,state) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				PreparedStatement pst = conn.prepareStatement(sql);
+				pst.setString(1, s.getFname());
+				pst.setString(2, s.getFname());
+				pst.setLong(3, s.getMobile());
+				pst.setString(4, s.getEmail());
+				pst.setString(5, s.getPassword());
+				pst.setString(6, s.getEducation());
+				pst.setString(7, s.getGender());
+				pst.setString(8, s.getReligion());
+				pst.setString(9, s.getCategory());
+				pst.setString(10, s.getAddress());
+				pst.setString(11, s.getCity());
+				pst.setLong(12, s.getZipcode());
+				pst.setString(13, s.getDistrict());
+				pst.setString(14, s.getState());
+				pst.executeUpdate();
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
+	
+}

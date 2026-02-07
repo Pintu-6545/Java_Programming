@@ -1,0 +1,138 @@
+package com.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.bean.Student;
+import com.util.StudentUtil;
+
+public class StudentDao {
+		
+		public static void insertStudent(Student s)
+		{
+			
+			try {
+				
+				Connection conn = StudentUtil.createConnection();
+				String sql="insert into students(fname,lname,mobile,email,password,education,gender,religion,category,address,city,zipcode,district,state) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				PreparedStatement pst = conn.prepareStatement(sql);
+				pst.setString(1, s.getFname());
+				pst.setString(2, s.getLname());
+				pst.setLong(3, s.getMobile());
+				pst.setString(4, s.getEmail());
+				pst.setString(5, s.getPassword());
+				pst.setString(6, s.getEducation());
+				pst.setString(7, s.getGender());
+				pst.setString(8, s.getReligion());
+				pst.setString(9, s.getCategory());
+				pst.setString(10, s.getAddress());
+				pst.setString(11, s.getCity());
+				pst.setLong(12, s.getZipcode());
+				pst.setString(13, s.getDistrict());
+				pst.setString(14, s.getState());
+				pst.executeUpdate();
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
+		
+		public static List<Student> getAllStudent()
+		{
+			List<Student> list = new ArrayList<Student>();
+			try {
+				Connection conn=StudentUtil.createConnection();
+				String sql="select * from students";
+				PreparedStatement pst = conn.prepareStatement(sql);
+				ResultSet rs = pst.executeQuery();
+				while(rs.next())
+				{
+					Student s = new Student();
+					s.setSid(rs.getInt("sid"));
+					s.setFname(rs.getString("fname"));
+					s.setLname(rs.getString("lname"));
+					s.setMobile(rs.getLong("mobile"));
+					s.setEmail(rs.getString("email"));
+					s.setPassword(rs.getString("password"));
+					s.setEducation(rs.getString("education"));
+					s.setGender(rs.getString("gender"));
+					s.setReligion(rs.getString("religion"));
+					s.setCategory(rs.getString("category"));
+					s.setAddress(rs.getString("address"));
+					s.setCity(rs.getString("city"));
+					s.setZipcode(rs.getLong("zipcode"));
+					s.setDistrict(rs.getString("district"));
+					s.setState(rs.getString("state")); 	
+					list.add(s);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			return list;
+		}
+		
+   public static Student getStudent(int sid)
+   {
+	   Student s = null;
+	   try {
+		   Connection conn=StudentUtil.createConnection();
+		   String sql="select * fromt students where sid=?";
+		   PreparedStatement pst = conn.prepareStatement(sql);
+		   pst.setInt(1, sid);
+		   ResultSet rs = pst.executeQuery();
+		   while(rs.next())
+		   {
+			   s = new Student();
+			   s.setSid(rs.getInt("sid"));
+			   s.setFname(rs.getString("fname"));
+			   s.setLname(rs.getString("lname"));
+			   s.setMobile(rs.getLong("mobile"));
+			   s.setEmail(rs.getString("email"));
+			   s.setPassword(rs.getString("password"));
+			   s.setEducation(rs.getString("education"));
+			   s.setGender(rs.getString("gender"));
+			   s.setReligion(rs.getString("religion"));
+			   s.setCategory(rs.getString("category"));
+			   s.setAddress(rs.getString("address"));
+			   s.setCity(rs.getString("city"));
+			   s.setZipcode(rs.getLong("zipcode"));
+			   s.setDistrict(rs.getString("district"));
+			   s.setState(rs.getString("state"));
+		   }
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	   return s;
+   }
+	public static void updateStudent(Student s)
+	{
+		try {
+			Connection conn=StudentUtil.createConnection();
+			String sql="update students set fname=?,lname=?,mobile=?,email=?,password=?,education=?,gender=?,religion=?,category=?,address=?,city=?,zipcode=?,district=?,state=? where sid=?";
+			PreparedStatement pst = conn.prepareStatement(sql);
+			pst.setString(1, s.getFname());
+			pst.setString(2, s.getLname());
+			pst.setLong(3, s.getMobile());
+			pst.setString(4, s.getEmail());
+			pst.setString(5, s.getPassword());
+			pst.setString(6, s.getEducation());
+			pst.setString(7, s.getGender());
+			pst.setString(8, s.getReligion());
+			pst.setString(9, s.getCategory());
+			pst.setString(10, s.getAddress());
+			pst.setString(11, s.getCity());
+			pst.setLong(12, s.getZipcode());
+			pst.setString(13, s.getDistrict());
+			pst.setString(14, s.getState());
+			pst.setInt(15, s.getSid());
+			pst.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}
